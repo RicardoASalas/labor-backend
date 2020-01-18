@@ -1,0 +1,66 @@
+***************************************************
+* CREACION DE BASE DE DATOS Y MIGRACIÓN DE TABLAS *                        
+***************************************************
+
+* Para crear la base de datos, escribir el siguiente comando en la consola:
+    
+    - $ php artisan make:database laborDB mysql utf8mb4-unicode
+
+
+***********************
+* MIGRACIÓN DE TABLAS *                        
+***********************
+
+
+* Para crear la migraciones, escribir los siguientes comandos en la consola:
+
+    - $ php artisan make:migration crear_tabla_users --create=users
+        
+    - $ php artisan make:migration crear_tabla_offers --create=offers
+
+    - $ php artisan make:migration crear_tabla_users_offers --create=users_offers
+
+    Esto creara una plantilla para definir las tablas que luego serán creadas en la DB.
+    
+
+* Para crear las relaciones entre las tablas 'users' y 'offers', escribir el schema de la tablas
+  intermedia 'users_ofers' de esta manera:
+
+        Schema::create('users_offers', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('offer_id')->unsigned();
+            $table->string('status');
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('offer_id')->references('id')->on('offers');
+        });
+
+(Las migraciones ya están creadas y sus schemas definidos en este proyecto, solo es necesario ejecutarlas)
+
+
+* Para ejecutar las migraciones y crear las tablas ejecutar el siguiente comando en la consola:
+ 
+    - $ php artisan migrate
+
+
+*****************
+* CREAR MODELOS *                        
+*****************
+
+* Para crear los modelos ejecutar el siguiente comando en la consola:
+
+    -$ php artisan make:model User 
+    -$ php artisan make:model Offer
+
+    (Los modelos ya estan creados y definidos para este proyecto)
+
+
+
+
+
+
+
+
+
+
