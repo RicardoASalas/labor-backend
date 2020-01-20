@@ -14,13 +14,15 @@ class CrearTablaUsersOffers extends Migration
     public function up()
     {
         Schema::create('users_offers', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('offer_id')->unsigned();
+            // $table->bigInteger('user_id')->unsigned();
+            // $table->bigInteger('offer_id')->unsigned();
+            $table->bigInteger('user_id');
+            $table->bigInteger('offer_id');
             $table->integer('status');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('offer_id')->references('id')->on('offers');
+            // $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('offer_id')->references('id')->on('offers');
         });
     }
 
