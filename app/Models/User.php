@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function offer()
     {
-        return $this->belongsToMany(User::class, 'food_menu', 'id_menu', 'id_food')->withTimestamps();
+        return $this->belongsToMany('App\Models\Offer', 'users_offers', 'user_id', 'offer_id')->withTimestamps();
     }
 
 }

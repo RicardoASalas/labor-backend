@@ -14,7 +14,7 @@ class Offer extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class, 'user_name', 'email', 'password', 'phone', 'user_type', 'admin_level', 'avatar_url', 'cv_url', 'country', 'city')->withTimestamps();
+        return $this->belongsToMany('App\Model\User', 'users_offers', 'offer_id', 'user_id');
     }
 
 }
