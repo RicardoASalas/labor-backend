@@ -6,15 +6,42 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+
+
 class UserController extends Controller
 {
     public function insert(Request $request){
 
-    $input = $request->all();
-        // dd($input);//con dd interumpimos flujo y vemos que hay en el obj
-        // dump($input);//lo mismo que dd pero no interrumpe el flujo
-        $user = User::create($input);
-        return "El usuario ha sido creado correctamente";
+    // $input = $request->all();
+    //     // dd($input);//con dd interumpimos flujo y vemos que hay en el obj
+    //     // dump($input);//lo mismo que dd pero no interrumpe el flujo
+        
+    
+        $this->validate($request, [
+         
+            'user_name' => 'required|max:255',
+            'email'  => 'required|email|max:255|unique:users',
+            'password' => 'required|min:8',
+            'phone' => 'min:9',
+            'user_type' => 'required',
+            'admin_level' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+    
+        ]);
+        try{
+
+            $user = $request->all();
+            
+            $user['password'] = bcrypt($request->password);
+        
+            $user = User::create($user);
+    
+            return $user;
+
+        } catch (Exception $e) {
+             return response()->json(['error' => trans('api.something_went_wrong')], 500);
+        }
     }
     /**
      * Display a listing of the resource.

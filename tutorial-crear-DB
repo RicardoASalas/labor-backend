@@ -53,8 +53,53 @@
     -$ php artisan make:model User 
     -$ php artisan make:model Offer
 
+* Para relacionar las tablas se define la relacion en el modelo:
+
+    -Ejem: en el Modelo User se añade la funcion dentro de la clase:
+         public function offer()
+        {
+            return $this->belongsToMany('App\Models\Offer', 'users_offers', 'user_id', 'offer_id');
+        }
+* Si los modelos se almacenan en una carpeta a parte hay que cambiar el namespace de config/auth.php y en el propio 
+    Modelo User.php si se ha usado el que viene predefinido en Laravel.
+
     (Los modelos ya estan creados y definidos para este proyecto)
 
+
+*****************
+* CONTROLADORES *                        
+*****************
+
+* Se crea un controlador por cada tabla de la base de datos escribiendo en el terminal el siguiente comando:
+
+    - $ php artisan make:controller UserController
+
+*Esto creara un archivo PHP en la carpeta Controllers/ donde se creara una estructura predefinida para todos
+ los métodos del controlador.
+
+
+*****************
+*     RUTAS     *                        
+*****************
+
+* Las rutas de los metodos se definen en el fichero routes/api.php, este fichero lo crea composer automaticamente
+en la estructura del proyecto laravel.
+
+* Se definen los metodos como metodos estaticos de la clase Route de esta manera:
+
+    - Route::post('/register','UserController@insert');
+
+    En este caso es un metodo post que crea un nuevo usuario mediante el controlador UserController y la funcion insert
+    a través de la ruta /register.
+
+
+*****************
+*   POSTMAN     *                        
+*****************
+
+* Los endpoints se pueden testear con postman en la siguiente direccion:
+
+    - http://localhost:8000/api/register
 
 
 
