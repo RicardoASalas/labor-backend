@@ -15,9 +15,10 @@ class CrearTablaCompanies extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('comp_name');
-            $table->string('email');
+            $table->string('comp_name')->unique();
+            $table->string('email')->unique();
             $table->string('password');
+            $table->string('name');
             $table->string('phone');
             $table->string('avatar_url');
             $table->string('website');

@@ -23,6 +23,7 @@ class CrearTablaOffers extends Migration
             $table->string('salary');
             $table->string('contract_type');
             $table->integer('vacants');
+            $table->bigInteger('country_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
             $table->bigInteger('province_id')->unsigned();
             $table->integer('promotion_level');

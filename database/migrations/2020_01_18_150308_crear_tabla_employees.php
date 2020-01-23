@@ -15,12 +15,15 @@ class CrearTablaEmployees extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('emp_name');
-            $table->string('email');
+            $table->string('emp_name')->unique();
+            $table->string('email')->unique();
             $table->string('password');
+            $table->string('name');
+            $table->string('surname');
             $table->string('phone');
             $table->string('avatar_url');
             $table->string('cv_url');
+            $table->bigInteger('country_id')->unsigned();
             $table->bigInteger('city_id')->unsigned();
             $table->bigInteger('province_id')->unsigned();
             $table->string('website');
