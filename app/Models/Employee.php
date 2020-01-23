@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\Employee as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Employee extends Authenticatable
 {
     use Notifiable;
 
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_name', 'email', 'password', 'phone', 'user_type', 'admin_level', 'avatar_url', 'cv_url', 'country', 'city'  
+        'emp_name', 'email', 'password', 'phone', 'avatar_url', 'cv_url', 'province_id', 'city_id', 'website', 'description', 'nif'
     ];
 
     /**
@@ -37,10 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function offer()
+    public function offers()
     {
-        return $this->belongsToMany('App\Models\Offer', 'users_offers', 'user_id', 'offer_id');
+        return $this->belongsToMany('App\Models\Offer', 'employees_offers', 'emp_id', 'offer_id');
     }
+    public function skills()
+    {
+        return $this->belongsToMany('App\Models\Skills', 'skills_employees', 'emp_id', 'skill_id');
+    }
+    public function province()
+    {
+        return $this->belongsTo('App\Models\Province');
+    }
+    
 
 }
 
