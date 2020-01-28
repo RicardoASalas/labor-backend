@@ -18,17 +18,17 @@ class UserController extends Controller
         
     
         $this->validate($request, [
-         
+			
             'user_name' => 'required|max:255',
             'email'  => 'required|email|max:255|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:4',
             'phone' => 'min:9',
-            'user_type' => 'required',
-            'admin_level' => 'required',
-            'country' => 'required',
-            'city' => 'required',
-    
-        ]);
+            'isEnterprise' => 'required',
+            'province' => 'required',
+			'city' => 'required',
+			
+		]);
+		
         try{
 
             $user = $request->all();
