@@ -19,7 +19,8 @@ class CrearTablaEmployeesSkills extends Migration
 
 			
 			
-			$table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('skill_id')->references('id')->on('skills');
 			
         });
     }

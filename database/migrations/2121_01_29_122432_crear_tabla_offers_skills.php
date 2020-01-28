@@ -19,7 +19,11 @@ class CrearTablaOffersSkills extends Migration
 
 			
 			
-			$table->foreign('offer_id')->references('id')->on('offers');
+            $table->foreign('offer_id')->references('id')->on('offers');
+            $table->foreign('skill_id')->references('id')->on('skills');
+
+
+            
 			
         });
     }

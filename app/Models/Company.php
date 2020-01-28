@@ -23,9 +23,6 @@ class Company extends Model
     {
         return $this->hasMany('App\Models\Offer');
 	}
-    public function skills()
-    {
-        return $this->belongsToMany('App\Models\Skills', 'skills_owner', 'owner_id', 'skill_id');
-    }
+    
     
 }

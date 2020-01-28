@@ -16,7 +16,7 @@ class Offer extends Model
     }
     public function ownerOffer()
     {
-        return $this->belongsToMany('App\Model\Offer', "offers_skills", "skills_id", "offer_id");
+        return $this->belongsToMany('App\Model\Offer', "offers_skills", "skill_id", "offer_id");
     }
 
 }

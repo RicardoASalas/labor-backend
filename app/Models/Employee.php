@@ -51,7 +51,7 @@ class Employee extends Authenticatable
     }
     public function skills()
     {
-        return $this->belongsToMany('App\Models\Skills', 'skills_owner', 'owner_id', 'skill_id');
+        return $this->belongsToMany('App\Models\Skill', 'offer_skills', 'employee_id', 'skill_id');
     }
     
 

@@ -27,7 +27,7 @@ class Offer extends Model
 	
     public function skills()
     {
-        return $this->belongsToMany('App\Model\Skills', "skills_owner", "owner_id", "skills_id");
+        return $this->belongsToMany('App\Model\Skill', "offers_skills", "offer_id", "skill_id");
     }
 
 }
