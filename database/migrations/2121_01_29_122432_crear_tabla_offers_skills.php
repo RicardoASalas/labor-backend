@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaOfferSkills extends Migration
+class CrearTablaOffersSkills extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CrearTablaOfferSkills extends Migration
      */
     public function up()
     {
-        Schema::create('offerSkills', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('offers_skills', function (Blueprint $table) {
             $table->bigInteger('offer_id')->unsigned();
-            $table->integer('level')->unsigned();
-            $table->boolean('is_tested')->default(0);
-            
-            $table->foreign('offer_id')->references('id')->on('offers');
+            $table->bigInteger('skill_id')->unsigned();
+
+			
+			
+			$table->foreign('offer_id')->references('id')->on('offers');
+			
         });
     }
 
@@ -30,6 +31,6 @@ class CrearTablaOfferSkills extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offerSkills');
+        Schema::dropIfExists('offers_skills');
     }
 }

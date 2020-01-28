@@ -7,25 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     protected $fillable = [
-        'comp_id', 'title', 'description', 'sector', 'experience', 'salary',
-        'contract_type', 'vacants', 'city_id', 'province_id', 'promotion_level', 'is_active' 
+		"title", "description", "sector",
+		"experience", "min_salary", "max_salary",
+		"contract_type", "workday", "vacancy",
+		"province", "city",
+		"promotion_level", "is_active"
+		
     ];
 
-    public function employers()
+	
+    public function company()
     {
-        return $this->belongsToMany('App\Model\Employee', 'employees_offers', 'offer_id', 'emp_id');
-    }
-    public function offerSkills()
+        return $this->belongsTo('App\Model\Company');
+	}
+    public function candidates()
     {
-        return $this->hasMany('App\Model\OfferSkills');
-    }
-    public function companie()
+        return $this->belongsToMany('App\Model\Employee', 'employees_offers', 'offer_id', 'employee_id');
+	}
+	
+    public function skills()
     {
-        return $this->belongsTo('App\Model\Companie');
-    }
-    public function province()
-    {
-        return $this->belongsTo('App\Model\Province');
+        return $this->belongsToMany('App\Model\Skills', "skills_owner", "owner_id", "skills_id");
     }
 
 }

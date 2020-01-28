@@ -17,10 +17,14 @@ class CrearTablaEmployeesOffers extends Migration
             $table->bigInteger('employee_id')->unsigned();
             $table->bigInteger('offer_id')->unsigned();
             $table->integer('status');
-            $table->timestamps();
-
+			
+			$table->timestamps();
+			
+			
+			
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('offer_id')->references('id')->on('offers');
+			$table->foreign('offer_id')->references('id')->on('offers');
+			
         });
     }
 

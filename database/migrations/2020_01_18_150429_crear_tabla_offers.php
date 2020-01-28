@@ -15,23 +15,31 @@ class CrearTablaOffers extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('comp_id')->unsigned();
-            $table->string('title');
+            $table->bigInteger('company_id')->unsigned();
+			
+			$table->string('title');
             $table->string('description');
-            $table->string('sector');
+			$table->string('sector');
+			
             $table->string('experience');
-            $table->string('salary');
-            $table->string('contract_type');
-            $table->integer('vacants');
-            $table->bigInteger('country_id')->unsigned();
-            $table->bigInteger('city_id')->unsigned();
-            $table->bigInteger('province_id')->unsigned();
+            $table->integer('min_salary');
+			$table->integer('max_salary');
+			
+			$table->string('contract_type');
+			$table->string('workday');
+			$table->integer('vacants');
+			
+            $table->string('city');
+			$table->string('province');
+			
             $table->integer('promotion_level');
             $table->boolean('is_active');
             $table->timestamps();
 
-            $table->foreign('comp_id')->references('id')->on('companies');
-            $table->foreign('province_id')->references('id')->on('provinces');
+			
+			
+			$table->foreign('company_id')->references('id')->on('companies');
+			
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\Employee as Authenticatable;
+// use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Employee extends Authenticatable
@@ -16,7 +17,14 @@ class Employee extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'emp_name', 'email', 'password', 'phone', 'avatar_url', 'cv_url', 'province_id', 'city_id', 'website', 'description', 'nif'
+		"username", "password",
+		"name", "surname", "description",
+		"email", "phone", "website",
+		"avatar_url", "cv_url",
+		"province", "city",
+		"nif",
+		"isCompany"
+		
     ];
 
     /**
@@ -25,7 +33,7 @@ class Employee extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+		"password"
     ];
 
     /**
@@ -39,15 +47,11 @@ class Employee extends Authenticatable
 
     public function offers()
     {
-        return $this->belongsToMany('App\Models\Offer', 'employees_offers', 'emp_id', 'offer_id');
+        return $this->belongsToMany('App\Models\Offer', 'employees_offers', 'employee_id', 'offer_id');
     }
-    public function employeeSkills()
+    public function skills()
     {
-        return $this->hasMany('App\Model\EmployeeSkills');
-    }
-    public function province()
-    {
-        return $this->belongsTo('App\Models\Province');
+        return $this->belongsToMany('App\Models\Skills', 'skills_owner', 'owner_id', 'skill_id');
     }
     
 

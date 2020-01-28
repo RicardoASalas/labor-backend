@@ -15,26 +15,31 @@ class CrearTablaEmployees extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('emp_name')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('username')->unique();
+			$table->string('password');
+			
             $table->string('name');
-            $table->string('surname');
-            $table->string('phone');
+			$table->string('surname');
+			$table->string('description');
+			
+            $table->string('email')->unique();
+			$table->string('phone');
+			$table->string('website');
+			
             $table->string('avatar_url');
-            $table->string('cv_url');
-            $table->bigInteger('country_id')->unsigned();
-            $table->bigInteger('city_id')->unsigned();
-            $table->bigInteger('province_id')->unsigned();
-            $table->string('website');
-            $table->string('description');
-            $table->string('nif');
-            $table->timestamps();
-
-            $table->foreign('province_id')->references('id')->on('provinces');
+			$table->string('cv_url');
+			
+            $table->string('province');
+            $table->string('city_id');
+           
+			$table->string('nif')->unique();
+			$table->boolean("is_company");
+			
+			$table->timestamps();
+			
         });
-    }
-
+	}
+	
     /**
      * Reverse the migrations.
      *
