@@ -4,45 +4,102 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\User;
+use App\Models\Employee;
+use App\Models\Company;
 
 
 
 class UserController extends Controller
 {
+	
     public function insert(Request $request){
-
-    // $input = $request->all();
-    //     // dd($input);//con dd interumpimos flujo y vemos que hay en el obj
-    //     // dump($input);//lo mismo que dd pero no interrumpe el flujo
-        
-    
-        $this->validate($request, [
-			
-            'user_name' => 'required|max:255',
-            'email'  => 'required|email|max:255|unique:users',
-            'password' => 'required|min:4',
-            'phone' => 'min:9',
-            'isEnterprise' => 'required',
-            'province' => 'required',
-			'city' => 'required',
-			
-		]);
 		
-        try{
-
-            $user = $request->all();
-            
-            $user['password'] = bcrypt($request->password);
+    	$body = $request->all();
+		
+		// var_dump($body);
+		
+		// dd($input); //con dd interumpimos flujo y vemos que hay en el obj
+        // dump($input); //lo mismo que dd pero no interrumpe el flujo
         
-            $user = User::create($user);
-    
-            return $user;
-
+		
+		
+        // $this->validate($request, [
+			
+        //     'user_name' => 'required|max:255',
+        //     'email'  => 'required|email|max:255',
+        //     // 'email'  => 'required|email|max:255|unique:users',
+        //     'password' => 'required|min:4',
+        //     'phone' => 'min:9',
+        //     'isEnterprise' => 'required',
+        //     'province' => 'required',
+		// 	'city' => 'required',
+			
+		// ]);
+		
+        try {
+			
+			
+			// Encripto la contraseña
+			$body['password'] = bcrypt($body["password"]);
+			
+			
+			// Compruebo si es empleado o empresa
+			if ($body['is_company']) {
+				
+				// Genero un UID
+				$body["uid"] = uniqid("c");	
+				
+				// Creo
+				$body = Company::create($body);
+				
+				return response() -> json ([
+					"haSalido" => "bien",
+				]);
+				
+			} else {
+				
+				// Genero un UID
+				$body["uid"] = uniqid("e");	
+				
+				// Creo
+				$body = Employee::create($body);
+				
+				return response() -> json ([
+					"haSalido" => "bien",
+				]);
+				
+			};
+			
+			
         } catch (Exception $e) {
-             return response()->json(['error' => trans('api.something_went_wrong')], 500);
+			
+			// return response()->json(['error' => trans('api.something_went_wrong')], 500);
+			
+			return response()->json([
+				'error' => "mal",
+				'errorCode' => "user_register_1"
+			], 500);
+			
         }
-    }
+	}
+	
+	
+	
+	public function getEmployee($uid) {
+		
+		$employees = Employee::where("uid", "=", $uid) -> get();
+		
+		
+		if ($employees != null) {
+			return response() -> json ($employees[0]);
+		};
+		
+		
+		
+	}
+	
+	
+	
     /**
      * Display a listing of the resource.
      *

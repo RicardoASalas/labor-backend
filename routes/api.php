@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
 use App\Http\Controllers;
-
 use App\Http\Controllers\Auth;
 
 /*
@@ -17,9 +15,26 @@ use App\Http\Controllers\Auth;
 |
 */
 
+
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
 
-Route::post('/user/register','UserController@insert');
+
+
+// Route::group(['middleware' => ['cors']], function () {
+	
+	// Users
+	Route::get('/test','TestController@test');
+	Route::post('/user/register','UserController@insert');
+	
+	Route::get('/user/{uid}','UserController@getEmployee');
+	
+	
+    // Ejemplo con params
+    // Route::get('/loginU/{email}/{password}','UsuarioController@getLoginU');
+	
+// });
 

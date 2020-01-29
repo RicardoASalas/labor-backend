@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\Employee as Authenticatable;
-// use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Foundation\Auth\Employee as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Employee extends Authenticatable
+class Employee extends Model
 {
     use Notifiable;
 
@@ -23,7 +23,7 @@ class Employee extends Authenticatable
 		"avatar_url", "cv_url",
 		"province", "city",
 		"nif",
-		"isCompany"
+		"is_company", "uid"
 		
     ];
 

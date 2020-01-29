@@ -28,7 +28,9 @@ class CrearTablaCompanies extends Migration
 			
             $table->string('avatar_url');
 			$table->string('cif')->unique();
+			
 			$table->boolean("is_company");
+			$table->string("uid");
 			
             $table->timestamps();
 
