@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-//use Illuminate\Foundation\Auth\Employee as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+
 
 class Employee extends Model
 {
@@ -33,7 +33,7 @@ class Employee extends Model
      * @var array
      */
     protected $hidden = [
-		"password"
+		// "password"
     ];
 
     /**
@@ -45,6 +45,8 @@ class Employee extends Model
         'email_verified_at' => 'datetime',
     ];
 
+	
+	
     public function offers()
     {
         return $this->belongsToMany('App\Models\Offer', 'employees_offers', 'employee_id', 'offer_id');

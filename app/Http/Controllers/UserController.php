@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Employee;
 use App\Models\Company;
 
 
-
-class UserController extends Controller
-{
+class UserController extends Controller {
 	
-    public function insert(Request $request){
+    public function register(Request $request){
 		
     	$body = $request->all();
 		
@@ -85,15 +85,73 @@ class UserController extends Controller
 	
 	
 	
-	public function getEmployee($uid) {
+	public function login(Request $request) {
 		
-		$employees = Employee::where("uid", "=", $uid) -> get();
+		$body = $request->all();
+		
+		$password = $body["password"];
 		
 		
-		if ($employees != null) {
-			return response() -> json ($employees[0]);
+		// Busco en empleados
+		// $user = Employee::where("username", "=", $username) -> get();
+		
+		// if ( $user -> isEmpty() ) {
+		// 	$user = Company::where("uid", "=", $uid) -> get();
+		// };
+		
+		
+		// $user = Employee::where("password", $body["password"])
+		// ->where("username", "=", $body["username"] )
+		// ->orWhere("email", $body["email"] )
+		// ->get();
+		
+		
+		
+		// Busco
+		$user = DB::table('employees')
+		-> where('username', '=', $body["username"])
+		-> orWhere('email', $body["username"])
+		-> get();
+		
+		
+		// Compruebo si encuentra algo
+		if ($user -> isEmpty()) {
+			
+			return response() -> json([
+				"errorCode" => "user_login_1",
+				"error" => "Wrong username, email or password.",
+			]);
+			
+		} else {
+			
+			$password = $user[0] -> password;
+			
+			// Compruebo la contraseña
+			if (Hash::check($body["password"], $password)) {
+				return response() -> json($user[0]);
+			};
+			
 		};
 		
+		
+	}
+	
+	
+	
+	public function getUser($uid) {
+		
+		$user = Employee::where("uid", "=", $uid) -> get();
+		
+		if ( $user -> isEmpty() ) {
+			$user = Company::where("uid", "=", $uid) -> get();
+		};
+		
+		
+		if ( $user -> isEmpty() ) {
+			return response() -> json([]);
+		} else {
+			return response() -> json($user[0]);
+		};
 		
 		
 	}

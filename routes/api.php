@@ -28,9 +28,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	
 	// Users
 	Route::get('/test','TestController@test');
-	Route::post('/user/register','UserController@insert');
 	
-	Route::get('/user/{uid}','UserController@getEmployee');
+	
+	// User
+	Route::post('/user/register','UserController@register');
+	Route::post('/user/login','UserController@login');
+	Route::get('/user/{uid}','UserController@getUser');
 	
 	
     // Ejemplo con params

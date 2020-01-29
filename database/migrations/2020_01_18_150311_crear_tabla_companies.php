@@ -20,14 +20,14 @@ class CrearTablaCompanies extends Migration
 			
             $table->string('name');
             $table->string('sector');
-			$table->string('description');
+			$table->string('description') -> default("");
 			
             $table->string('email')->unique();
             $table->string('phone');
-			$table->string('website');
+			$table->string('website') -> default("");
 			
-            $table->string('avatar_url');
-			$table->string('cif')->unique();
+            $table->string('avatar_url') -> default("");
+			$table->string('cif')->unique() -> default("");
 			
 			$table->boolean("is_company");
 			$table->string("uid");
