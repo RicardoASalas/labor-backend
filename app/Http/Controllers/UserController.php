@@ -14,14 +14,13 @@ class UserController extends Controller {
 	
     public function register(Request $request){
 		
-    	$body = $request->all();
+    	$body = $request -> all();
 		
 		// var_dump($body);
 		
-		// dd($input); //con dd interumpimos flujo y vemos que hay en el obj
+		// dump($body); //con dd interumpimos flujo y vemos que hay en el obj
         // dump($input); //lo mismo que dd pero no interrumpe el flujo
         
-		
 		
         // $this->validate($request, [
 			
@@ -36,7 +35,11 @@ class UserController extends Controller {
 			
 		// ]);
 		
+		
+		
         try {
+			
+			var_dump($body);
 			
 			
 			// Encripto la contraseña
@@ -140,17 +143,30 @@ class UserController extends Controller {
 	
 	public function getUser($uid) {
 		
+		// Busco empleados
 		$user = Employee::where("uid", "=", $uid) -> get();
 		
+		
+		// Si no encuentro, busco empresas
 		if ( $user -> isEmpty() ) {
 			$user = Company::where("uid", "=", $uid) -> get();
 		};
 		
 		
+		// Si encuentro algo, lo devuelvo
 		if ( $user -> isEmpty() ) {
 			return response() -> json([]);
 		} else {
-			return response() -> json($user[0]);
+			
+			// Selecciono el primer user
+			$user = $user[0];
+			
+			// Elimino el campo de la contraseña
+			unset($user["password"]);
+			
+			
+			return response() -> json($user);
+			
 		};
 		
 		

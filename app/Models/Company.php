@@ -16,7 +16,7 @@ class Company extends Model
 		"email", "name", "sector", "description",
 		"phone", "email", "website",
 		"avatar_url", "cif",
-		"isCompany", "uid"
+		"is_company", "uid"
 			
 	];
 	
