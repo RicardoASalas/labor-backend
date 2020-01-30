@@ -24,21 +24,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::group(['middleware' => ['cors']], function () {
-	
-	// Users
-	Route::get('/test','TestController@test');
-	Route::post('/test','TestController@testpost');
-	
-	
-	// User
-	Route::post('/user/register','UserController@register');
-	Route::post('/user/login','UserController@login');
-	Route::get('/user/{uid}','UserController@getUser');
-	
-	
-    // Ejemplo con params
-    // Route::get('/loginU/{email}/{password}','UsuarioController@getLoginU');
-	
-});
+// Users
+Route::get('/test','TestController@test');
+Route::post('/test','TestController@testpost');
+
+
+// User
+Route::post('/user/register','UserController@register');
+Route::post('/user/login','UserController@login');
+Route::get('/user/{uid}','UserController@getUser');
+
+
+// Ejemplo con params
+// Route::get('/loginU/{email}/{password}','UsuarioController@getLoginU');
+
+
 
