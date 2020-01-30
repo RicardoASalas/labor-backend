@@ -16,11 +16,6 @@ class UserController extends Controller {
 		
     	$body = $request -> all();
 		
-		// var_dump($body);
-		
-		// dump($body); //con dd interumpimos flujo y vemos que hay en el obj
-        // dump($input); //lo mismo que dd pero no interrumpe el flujo
-        
 		
         // $this->validate($request, [
 			
@@ -39,7 +34,7 @@ class UserController extends Controller {
 		
         try {
 			
-			var_dump($body);
+			// var_dump($body);
 			
 			
 			// Encripto la contraseña
@@ -55,6 +50,7 @@ class UserController extends Controller {
 				// Creo
 				$body = Company::create($body);
 				
+				
 				return response() -> json ([
 					"haSalido" => "bien",
 				]);
@@ -67,23 +63,28 @@ class UserController extends Controller {
 				// Creo
 				$body = Employee::create($body);
 				
+				
 				return response() -> json ([
-					"haSalido" => "bien",
+					"success" => true,
 				]);
 				
 			};
 			
+        } catch(\Illuminate\Database\QueryException $e){
 			
-        } catch (Exception $e) {
 			
-			// return response()->json(['error' => trans('api.something_went_wrong')], 500);
+			$errorCode = $e->errorInfo[1];
 			
-			return response()->json([
-				'error' => "mal",
-				'errorCode' => "user_register_1"
-			], 500);
 			
-        }
+            if ($errorCode == 1062) {
+				return response()->json([
+					'error' => "El usuario o el email ya existen.",
+					'errorCode' => "user_register_1"
+				], 500);            
+			};
+			
+		};
+
 	}
 	
 	
