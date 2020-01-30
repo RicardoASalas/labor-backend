@@ -48,11 +48,11 @@ class UserController extends Controller {
 				$body["uid"] = uniqid("c");	
 				
 				// Creo
-				$body = Company::create($body);
+				// $body = Company::create($body) -> save();
 				
 				
 				return response() -> json ([
-					"success" => true,
+					"success" => "c",
 				]);
 				
 			} else {
@@ -65,13 +65,12 @@ class UserController extends Controller {
 				
 				
 				return response() -> json ([
-					"success" => true,
+					"success" => "e",
 				]);
 				
 			};
 			
         } catch(\Illuminate\Database\QueryException $e){
-			
 			
 			$errorCode = $e->errorInfo[1];
 			
@@ -82,6 +81,9 @@ class UserController extends Controller {
 					'errorCode' => "user_register_1"
 				], 500);            
 			};
+			
+			
+			return $e->errorInfo;
 			
 		};
 
@@ -132,6 +134,11 @@ class UserController extends Controller {
 			
 			// Compruebo la contraseña
 			if (Hash::check($body["password"], $password)) {
+				
+				$response = [
+					
+				];
+				
 				return response() -> json($user[0]);
 			};
 			

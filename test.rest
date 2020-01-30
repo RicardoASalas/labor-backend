@@ -25,8 +25,8 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "Ricardo",
-	"email": "ricardo@labor.com",
+	"username": "asdf",
+	"email": "asdf@labor.com",
 	"password": "1234",
 	"province": "Valencia",
 	"city": "Valencia",
