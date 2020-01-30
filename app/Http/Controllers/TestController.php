@@ -18,4 +18,13 @@ class TestController extends Controller
 		
 	}
 	
+	
+    public function testpost(Request $request){
+		
+		return response() -> json ([
+			"hola" => "asdf"
+		]);
+		
+	}
+	
 }

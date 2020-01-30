@@ -24,10 +24,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-// Route::group(['middleware' => ['cors']], function () {
+Route::group(['middleware' => ['cors']], function () {
 	
 	// Users
 	Route::get('/test','TestController@test');
+	Route::post('/test','TestController@testpost');
 	
 	
 	// User
@@ -39,5 +40,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     // Ejemplo con params
     // Route::get('/loginU/{email}/{password}','UsuarioController@getLoginU');
 	
-// });
+});
 

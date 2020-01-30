@@ -5,6 +5,14 @@
 GET {{url}}/test
 ###
 
+POST {{url}}/test
+Content-Type:application/json
+
+{
+	"key": "hola"
+}
+###
+
 
 
 // -----------------

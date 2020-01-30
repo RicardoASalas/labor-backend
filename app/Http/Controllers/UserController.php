@@ -52,7 +52,7 @@ class UserController extends Controller {
 				
 				
 				return response() -> json ([
-					"haSalido" => "bien",
+					"success" => true,
 				]);
 				
 			} else {

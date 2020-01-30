@@ -55,6 +55,13 @@ $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
 
+
+// Añado headers para todas las respuestas
+$response->header("Access-Control-Allow-Origin", "*");
+$response->header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+$response->header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, X-Token-Auth, Authorization"); 
+
+
 $response->send();
 
 $kernel->terminate($request, $response);
