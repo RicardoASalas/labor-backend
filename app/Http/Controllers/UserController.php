@@ -79,7 +79,7 @@ class UserController extends Controller {
 				return response()->json([
 					'error' => "El usuario o el email ya existen.",
 					'errorCode' => "user_register_1"
-				], 500);            
+				], 400);            
 			};
 			
 			
