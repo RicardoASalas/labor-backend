@@ -65,7 +65,23 @@ Content-Type:application/json
 
 // Perfil de usuario
 
-GET {{url}}/user/e5e32e93c666da
+GET {{url}}/user/e5e32fa3e44383
+
+
+###
+
+POST  {{url}}/user/editProfile/e5e32fa3e44383
+Content-Type:application/json
+
+{
+	"name": "Manolo",
+	"surname": "El del bombo",
+	"email": "Manolo@labor.es",
+	"province": "Murcia",
+	"city": "Gandia"
+}
+
+
 ###
 
 

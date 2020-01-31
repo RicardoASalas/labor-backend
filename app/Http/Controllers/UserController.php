@@ -166,6 +166,7 @@ class UserController extends Controller {
 			return response() -> json([]);
 		} else {
 			
+			
 			// Selecciono el primer user
 			$user = $user[0];
 			
@@ -179,6 +180,48 @@ class UserController extends Controller {
 		
 		
 	}
+
+	public function editUser(Request $request, $uid) {
+
+		$body = $request->all();
+
+		// Busco empleados
+		$user = Employee::where("uid", "=", $uid) -> first();
+		$user->update($body);
+		$user->save();
+		return response() -> json ([
+			"success" => "e",
+		]);
+		
+		
+		// Si no encuentro, busco empresas
+		if ( $user -> isEmpty() ) {
+			$user = Company::where("uid", "=", $uid) -> first();
+			$user->update($body);
+			$user->save();
+			return response() -> json ([
+				"success" => "e",
+			]);
+		};
+		
+		
+		// Si encuentro algo, lo edito
+		if ( $user -> isEmpty() ) {
+
+			return response() -> json([]);
+		} else {
+			
+						
+			return response() -> json ($user);
+			
+		};
+		
+		
+	}
+
+
+	
+
 	
 	
 	

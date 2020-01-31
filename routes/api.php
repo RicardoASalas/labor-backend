@@ -33,6 +33,7 @@ Route::post('/test','TestController@testpost');
 Route::post('/user/register','UserController@register');
 Route::post('/user/login','UserController@login');
 Route::get('/user/{uid}','UserController@getUser');
+Route::post('/user/editProfile/{uid}','UserController@editUser');
 
 
 // Ejemplo con params
