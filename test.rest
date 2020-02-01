@@ -108,3 +108,29 @@ Content-Type:application/json
 // Logout
 GET {{url}}/user/logout?token={{token}}
 ###
+
+// --------------------------------
+// O F E R T A  D E  T R A B A J O
+// --------------------------------
+
+// Register offer
+
+POST {{url}}/offer/register/c5e359f46d90ee
+Content-Type:application/json
+
+{
+	"title": "asdf@labor.com",
+	"description": "Oferta mu wena pa currá",
+	"sector": "tecnologico",
+	"experience": "2",
+	"min_salary":10000,
+	"max_salary":20000,
+	"workday":"no se que va aqui",
+	"contract_type":"jc",
+	"vacants":5,
+	"city": "Valencia",
+	"province":"Valencia",
+	"promotion_level": 2,
+	"is_active": 1
+}
+###

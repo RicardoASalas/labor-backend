@@ -49,6 +49,7 @@ class UserController extends Controller {
 				
 				// Creo
 				// $body = Company::create($body) -> save();
+				$body = Company::create($body);
 				
 				
 				return response() -> json ([

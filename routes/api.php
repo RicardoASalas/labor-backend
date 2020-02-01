@@ -35,6 +35,10 @@ Route::post('/user/login','UserController@login');
 Route::get('/user/{uid}','UserController@getUser');
 Route::post('/user/editProfile/{uid}','UserController@editUser');
 
+// Offer
+Route::post('/offer/register/{uid}','OfferController@registerOffer');
+
+
 
 // Ejemplo con params
 // Route::get('/loginU/{email}/{password}','UsuarioController@getLoginU');

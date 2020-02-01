@@ -27,7 +27,7 @@ class CrearTablaOffers extends Migration
 			
 			$table->string('contract_type');
 			$table->string('workday');
-			$table->integer('vacants');
+			$table->integer('vacants')-> default(1);
 			
             $table->string('city');
 			$table->string('province');

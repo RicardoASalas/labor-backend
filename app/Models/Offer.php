@@ -1,15 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+
 
 class Offer extends Model
 {
     protected $fillable = [
-		"title", "description", "sector",
+		"company_id","title", "description", "sector",
 		"experience", "min_salary", "max_salary",
-		"contract_type", "workday", "vacancy",
+		"contract_type", "workday", "vacants",
 		"province", "city",
 		"promotion_level", "is_active"
 		
