@@ -115,7 +115,7 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e359f46d90ee
+POST {{url}}/offer/register/c5e35b3e2bd866
 Content-Type:application/json
 
 {
@@ -125,12 +125,9 @@ Content-Type:application/json
 	"experience": "2",
 	"min_salary":10000,
 	"max_salary":20000,
-	"workday":"no se que va aqui",
-	"contract_type":"jc",
+	"workday":"jc",
 	"vacants":5,
 	"city": "Valencia",
-	"province":"Valencia",
-	"promotion_level": 2,
-	"is_active": 1
+	"province":"Valencia"
 }
 ###

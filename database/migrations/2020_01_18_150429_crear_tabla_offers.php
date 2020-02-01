@@ -25,15 +25,15 @@ class CrearTablaOffers extends Migration
             $table->integer('min_salary');
 			$table->integer('max_salary');
 			
-			$table->string('contract_type');
+			// $table->string('contract_type');
 			$table->string('workday');
 			$table->integer('vacants')-> default(1);
 			
             $table->string('city');
 			$table->string('province');
 			
-            $table->integer('promotion_level');
-            $table->boolean('is_active');
+            // $table->integer('promotion_level');
+            $table->boolean('is_active')-> default(1);
             $table->timestamps();
 
 			
