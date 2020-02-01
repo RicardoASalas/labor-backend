@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Offer;
 use App\Models\Company;
+use App\Models\Employee;
+
 
 class OfferController extends Controller
 {
@@ -49,6 +51,48 @@ class OfferController extends Controller
                     return response()->json([
                         'error' => "Error al crear la oferta de trabajo",
                         'errorCode' => "offer_register_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
+			
+		};
+
+    }
+
+    public function findOffer(Request $request){
+		
+    	$keyword = $request['keyword'];
+	
+		
+        try {
+				
+               
+                // Busco en la tabla ofertas cotejando las columnas con la keyword introducida
+                // var_dump($keyword);
+
+                $result = Offer::query()
+                -> where('title', 'LIKE', "%{$keyword}%")
+                ->orWhere('description', 'LIKE', "%{$keyword}%") 
+                ->orWhere('sector', 'LIKE', "%{$keyword}%") 
+                ->orWhere('province', 'LIKE', "%{$keyword}%") 
+                ->orWhere('city', 'LIKE', "%{$keyword}%")  -> first();
+               
+                // var_dump($result);
+				
+				
+				return response() -> json($result);
+				
+			} catch(\Illuminate\Database\QueryException $e){
+                
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "offer_find_1"
                     ], 404);            
                 };
                 

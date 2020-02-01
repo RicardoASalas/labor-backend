@@ -151,7 +151,7 @@ class UserController extends Controller {
 	
 	
 	public function getUser($uid) {
-		
+		var_dump($uid);
 		// Busco empleados
 		$user = Employee::where("uid", "=", $uid) -> get();
 		

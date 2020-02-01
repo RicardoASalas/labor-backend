@@ -65,7 +65,7 @@ Content-Type:application/json
 
 // Perfil de usuario
 
-GET {{url}}/user/e5e32fa3e44383
+GET {{url}}/user/c5e35b3e2bd866
 
 
 ###
@@ -115,11 +115,11 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e35b3e2bd866
+POST {{url}}/offer/register/c5e35ce52d975a
 Content-Type:application/json
 
 {
-	"title": "asdf@labor.com",
+	"title": "desarrollador",
 	"description": "Oferta mu wena pa currá",
 	"sector": "tecnologico",
 	"experience": "2",
@@ -131,3 +131,14 @@ Content-Type:application/json
 	"province":"Valencia"
 }
 ###
+// Find offers
+
+GET {{url}}/offer/find
+Content-Type:application/json
+
+{
+	"keyword": "malaga"
+}
+###
+
+

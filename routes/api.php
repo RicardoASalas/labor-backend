@@ -37,6 +37,7 @@ Route::post('/user/editProfile/{uid}','UserController@editUser');
 
 // Offer
 Route::post('/offer/register/{uid}','OfferController@registerOffer');
+Route::get('/offer/find','OfferController@findOffer');
 
 
 
