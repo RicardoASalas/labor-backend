@@ -160,6 +160,21 @@ class OfferController extends Controller
 
                 $result = $user->offers;
                
+                // Recorro el array de ofertas suscritas
+
+                foreach($result as $offer){
+
+                    $company_id = $offer->company_id;
+
+                    // Busco la empresa cotejando la id de la oferta
+
+                    $company = Company::where("id", "=", $company_id) -> get();   
+
+                    // Incorporo el nombre de la empresa en el objeto de la oferta
+
+                    $offer['companyName'] = $company[0]->name;
+
+                }
 				
 				return response() -> json($result);
 				

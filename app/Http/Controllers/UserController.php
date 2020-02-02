@@ -153,7 +153,7 @@ class UserController extends Controller {
 	
 	
 	public function getUser($uid) {
-		var_dump($uid);
+		
 		// Busco empleados
 		$user = Employee::where("uid", "=", $uid) -> get();
 		
@@ -175,7 +175,6 @@ class UserController extends Controller {
 			
 			// Elimino el campo de la contraseña
 			unset($user["password"]);
-			
 			
 			return response() -> json($user);
 			

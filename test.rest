@@ -73,7 +73,7 @@ Content-Type:application/json
 
 // Perfil de usuario
 
-GET {{url}}/user/c5e35b3e2bd866
+GET {{url}}/user/c5e361cee7a87
 
 
 ###
@@ -151,14 +151,14 @@ Content-Type:application/json
 
 // Aply to an offer
 
-POST  {{url}}/offer/aply/2/e5e36150cdb214
+POST  {{url}}/offer/aply/3/e5e361cea4952c
 Content-Type:application/json
 
 ###
 
 // Get aplyed offers
 
-POST  {{url}}/offer/aplyed/e5e36150cdb214
+GET  {{url}}/offer/aplyed/e5e361cea4952c
 Content-Type:application/json
 
 ###
