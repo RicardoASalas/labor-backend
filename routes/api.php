@@ -41,6 +41,9 @@ Route::get('/user/find','UserController@findCompany');
 Route::post('/offer/register/{uid}','OfferController@registerOffer');
 Route::get('/offer/find','OfferController@findOffer');
 Route::post('/offer/aply/{offerId}/{uid}','OfferController@aplyOffer');
+Route::post('/offer/aplyed/{uid}','OfferController@getAplyOffers');
+
+
 
 
 

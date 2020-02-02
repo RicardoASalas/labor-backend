@@ -149,11 +149,21 @@ Content-Type:application/json
 }
 ###
 
-// Find offers
+// Aply to an offer
 
 POST  {{url}}/offer/aply/2/e5e36150cdb214
 Content-Type:application/json
 
 ###
+
+// Get aplyed offers
+
+POST  {{url}}/offer/aplyed/e5e36150cdb214
+Content-Type:application/json
+
+###
+
+
+
 
 

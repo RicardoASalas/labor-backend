@@ -146,23 +146,20 @@ class OfferController extends Controller
 		};
 	}
 	
-	public function getAplyOffers(Request $request, $uid){
+	public function getAplyOffers($uid){
 	
 		
         try {
 				
                
-                // Busco id_company cotajando la uid recibida
+                // Busco el employee cotejando la uid recibida
 
-                $user = Employee::where("uid", "=", $uid) -> get();
+                $user = Employee::where("uid", "=", $uid) -> first();
+
+                // Busco todas las ofertas a las que se ha inscrito el employee
+
+                $result = $user->offers;
                
-                $user_id = $user[0]->id;
-
-
-                $offers = $user->offer;
-               
-                var_dump($offer);
-				
 				
 				return response() -> json($result);
 				
