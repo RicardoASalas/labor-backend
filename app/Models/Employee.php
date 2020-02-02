@@ -49,7 +49,7 @@ class Employee extends Model
 	
     public function offers()
     {
-        return $this->belongsToMany('App\Models\Offer', 'employees_offers', 'employee_id', 'offer_id');
+        return $this->belongsToMany('App\Models\Offer', 'employees_offers', 'employee_id', 'offer_id')->withPivot('status');
     }
     public function skills()
     {

@@ -61,7 +61,15 @@ Content-Type:application/json
 }
 ###
 
+// Find companies
 
+GET {{url}}/user/find
+Content-Type:application/json
+
+{
+	"keyword": "empresa"
+}
+###
 
 // Perfil de usuario
 
@@ -115,12 +123,12 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e35ce52d975a
+POST {{url}}/offer/register/c5e3614f8358bb
 Content-Type:application/json
 
 {
-	"title": "desarrollador",
-	"description": "Oferta mu wena pa currá",
+	"title": "torero",
+	"description": "el curro del futuro",
 	"sector": "tecnologico",
 	"experience": "2",
 	"min_salary":10000,
@@ -137,8 +145,15 @@ GET {{url}}/offer/find
 Content-Type:application/json
 
 {
-	"keyword": "malaga"
+	"keyword": "mucho"
 }
+###
+
+// Find offers
+
+POST  {{url}}/offer/aply/2/e5e36150cdb214
+Content-Type:application/json
+
 ###
 
 

@@ -16,7 +16,7 @@ class CrearTablaEmployeesOffers extends Migration
         Schema::create('employees_offers', function (Blueprint $table) {
             $table->bigInteger('employee_id')->unsigned();
             $table->bigInteger('offer_id')->unsigned();
-            $table->integer('status');
+            $table->integer('status')->default(0);
 			
 			$table->timestamps();
 			

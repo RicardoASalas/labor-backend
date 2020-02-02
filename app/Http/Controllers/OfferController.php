@@ -11,7 +11,6 @@ use App\Models\Offer;
 use App\Models\Company;
 use App\Models\Employee;
 
-
 class OfferController extends Controller
 {
 
@@ -102,6 +101,89 @@ class OfferController extends Controller
 		};
 
     }
+
+    public function aplyOffer($offerId, $uid){
+	
+		
+        try {
+               
+                // Busco el employee cotejando la uid recibida
+
+                $user = Employee::where("uid", "=", $uid) -> first();
+               
+
+                // busco la oferta cotejando con su id 
+
+                $offer = Offer::find($offerId);
+                
+                // Me registro en la oferta añadiendo los id de usuario e id 
+                // de oferta en la tabla intermedia
+
+                $offer->candidates()->attach($user->id);
+               
+                
+				
+				
+				return response() -> json([
+                    "success" => "e",
+                ]);
+				
+			} catch(\Illuminate\Database\QueryException $e){
+                
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "offer_find_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
+			
+		};
+	}
+	
+	public function getAplyOffers(Request $request, $uid){
+	
+		
+        try {
+				
+               
+                // Busco id_company cotajando la uid recibida
+
+                $user = Employee::where("uid", "=", $uid) -> get();
+               
+                $user_id = $user[0]->id;
+
+
+                $offers = $user->offer;
+               
+                var_dump($offer);
+				
+				
+				return response() -> json($result);
+				
+			} catch(\Illuminate\Database\QueryException $e){
+                
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "company_find_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
+			
+		};
+	}
+
     
     /**
      * Display a listing of the resource.

@@ -34,10 +34,14 @@ Route::post('/user/register','UserController@register');
 Route::post('/user/login','UserController@login');
 Route::get('/user/{uid}','UserController@getUser');
 Route::post('/user/editProfile/{uid}','UserController@editUser');
+Route::get('/user/find','UserController@findCompany');
+
 
 // Offer
 Route::post('/offer/register/{uid}','OfferController@registerOffer');
 Route::get('/offer/find','OfferController@findOffer');
+Route::post('/offer/aply/{offerId}/{uid}','OfferController@aplyOffer');
+
 
 
 

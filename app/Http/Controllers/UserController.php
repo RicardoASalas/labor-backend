@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Employee;
 use App\Models\Company;
+use App\Models\Offer;
+
 
 
 class UserController extends Controller {
@@ -220,6 +222,50 @@ class UserController extends Controller {
 		
 	}
 
+	public function findCompany(Request $request){
+		
+		$keyword = $request;
+		
+		var_dump($keyword);
+	
+		
+    //     try {
+				
+               
+    //             // Busco en la tabla ofertas cotejando las columnas con la keyword introducida
+    //             var_dump($keyword);
+
+    //             $result = Company::query()
+    //             -> where('name', 'LIKE', "%{$keyword}%")
+    //             ->orWhere('description', 'LIKE', "%{$keyword}%") 
+    //             ->orWhere('sector', 'LIKE', "%{$keyword}%") 
+    //             ->orWhere('province', 'LIKE', "%{$keyword}%") 
+    //             ->orWhere('city', 'LIKE', "%{$keyword}%")  -> get();
+               
+    //             var_dump($result);
+				
+				
+	// 			return response() -> json($result);
+				
+	// 		} catch(\Illuminate\Database\QueryException $e){
+                
+    //             $errorCode = $e->errorInfo[1];
+                
+                
+    //             if ($errorCode == 1062) {
+    //                 return response()->json([
+    //                     'error' => "no se encontro ningun resultado",
+    //                     'errorCode' => "company_find_1"
+    //                 ], 404);            
+    //             };
+                
+                
+    //             return $e->errorInfo;
+			
+	// 	};
+
+	}
+	
 
 	
 

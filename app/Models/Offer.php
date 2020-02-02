@@ -26,16 +26,16 @@ class Offer extends Model
 	
     public function company()
     {
-        return $this->belongsTo('App\Model\Company');
+        return $this->belongsTo('App\Models\Company');
 	}
     public function candidates()
     {
-        return $this->belongsToMany('App\Model\Employee', 'employees_offers', 'offer_id', 'employee_id');
+        return $this->belongsToMany('App\Models\Employee', 'employees_offers', 'offer_id', 'employee_id')->withPivot('status');
 	}
 	
     public function skills()
     {
-        return $this->belongsToMany('App\Model\Skill', "offers_skills", "offer_id", "skill_id");
+        return $this->belongsToMany('App\Models\Skill', "offers_skills", "offer_id", "skill_id");
     }
 
 }
