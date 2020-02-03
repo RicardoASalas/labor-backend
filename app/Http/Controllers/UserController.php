@@ -134,15 +134,19 @@ class UserController extends Controller {
 		} else {
 			
 			$password = $user[0] -> password;
+			$user = $user[0];
 			
 			// Compruebo la contraseña
 			if (Hash::check($body["password"], $password)) {
 				
-				$response = [
-					
-				];
-				
-				return response() -> json($user[0]);
+				$response = array(
+					'name' => $user['name'],
+					'username' => $user['username'],
+					'uid' => $user['uid'],
+					'is_company' => $user['is_company']
+				);
+				var_dump($response);
+				return response() -> json($response);
 			};
 			
 		};
