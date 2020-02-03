@@ -101,14 +101,14 @@ POST {{url}}/user/login
 Content-Type:application/json
 
 {
-	"username":  "asdf",
+	"username":  "Icaruk",
 	"password":  "1234"
 }
 ###
 
 
 
-@userId = {{resLogin.response.body.userId}}
+@uid = {{resLogin.response.body.uid}}
 @token = {{resLogin.response.body.token}}
 
 
