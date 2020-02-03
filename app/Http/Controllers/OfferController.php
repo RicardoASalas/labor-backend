@@ -67,20 +67,20 @@ class OfferController extends Controller
         // var_dump($keyword);
 		
         try {
-				
-               if($keyword == ""){
 
-                    return  response() -> json(Offer::get());
-               };
-                // Busco en la tabla ofertas cotejando las columnas con la keyword introducida
-                // var_dump($keyword);
+			if ($keyword == "") {
+				return  response()->json(Offer::get());
+			};
+			
+			// Busco en la tabla ofertas cotejando las columnas con la keyword introducida
+			// var_dump($keyword);
 
-                $result = Offer::query()
-                ->where('title', 'LIKE', "%{$keyword}%")
-                ->orWhere('description', 'LIKE', "%{$keyword}%") 
-                ->orWhere('sector', 'LIKE', "%{$keyword}%") 
-                ->orWhere('province', 'LIKE', "%{$keyword}%") 
-                ->orWhere('city', 'LIKE', "%{$keyword}%")  -> first();
+			$result = Offer::query()
+				->where('title', 'LIKE', "%{$keyword}%")
+				->orWhere('description', 'LIKE', "%{$keyword}%")
+				->orWhere('sector', 'LIKE', "%{$keyword}%")
+				->orWhere('province', 'LIKE', "%{$keyword}%")
+				->orWhere('city', 'LIKE', "%{$keyword}%")->get();
 				
 				
 				return response() -> json($result);
