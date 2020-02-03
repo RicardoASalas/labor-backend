@@ -141,7 +141,7 @@ Content-Type:application/json
 ###
 // Find offers
 
-GET {{url}}/offer/find
+POST {{url}}/offer/find
 Content-Type:application/json
 
 {
