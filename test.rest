@@ -145,7 +145,7 @@ GET {{url}}/offer/find
 Content-Type:application/json
 
 {
-	"keyword": "mucho"
+	"keyword": ""
 }
 ###
 
