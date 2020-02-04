@@ -149,23 +149,45 @@ Content-Type:application/json
 }
 ###
 
-// Aply to an offer
+// Apply to an offer
 
 POST  {{url}}/offer/apply/3/e5e37e4019b6e2
 Content-Type:application/json
 
 ###
 
-// Get aplyed offers
+// Get applied offers
 
 GET  {{url}}/offer/applied/e5e37e4019b6e2
 Content-Type:application/json
 
 ###
 
+// --------------------------------
+// S K I L L S
+// --------------------------------
 
 
 
+// Get all skills
+
+GET  {{url}}/skill
+Content-Type:application/json
+
+// Apply to an skill
+
+###
+POST  {{url}}/skill/apply/3/e5e37e4019b6e2
+Content-Type:application/json
+
+###
+
+// Get applied skills
+
+GET  {{url}}/skill/applied/e5e37e4019b6e2
+Content-Type:application/json
+
+###
 
 
 
