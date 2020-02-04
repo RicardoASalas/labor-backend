@@ -40,8 +40,8 @@ Route::post('/user/find','UserController@findCompany');
 // Offer
 Route::post('/offer/register/{uid}','OfferController@registerOffer');
 Route::post('/offer/find','OfferController@findOffer');
-Route::post('/offer/aply/{offerId}/{uid}','OfferController@aplyOffer');
-Route::get('/offer/aplyed/{uid}','OfferController@getAplyOffers');
+Route::post('/offer/apply/{offerId}/{uid}','OfferController@applyOffer');
+Route::get('/offer/applied/{uid}','OfferController@getAppliedOffers');
 
 
 

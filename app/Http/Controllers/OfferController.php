@@ -104,7 +104,7 @@ class OfferController extends Controller
 
     }
 
-    public function aplyOffer($offerId, $uid){
+    public function apply($offerId, $uid){
 	
 		
         try {
@@ -148,7 +148,7 @@ class OfferController extends Controller
 		};
 	}
 	
-	public function getAplyOffers($uid){
+	public function getAppliedOffers($uid){
 	
 		
         try {
