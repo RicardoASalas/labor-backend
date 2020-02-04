@@ -18,14 +18,14 @@ class CrearTablaOffers extends Migration
             $table->bigInteger('company_id')->unsigned();
 			
 			$table->string('title');
-            $table->string('description');
+            $table->text('description');
 			$table->string('sector');
 			
             $table->string('experience');
             $table->integer('min_salary');
 			$table->integer('max_salary');
 			
-			// $table->string('contract_type');
+			$table->string('contract_type');
 			$table->string('workday');
 			$table->integer('vacants')-> default(1);
 			

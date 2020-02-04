@@ -20,14 +20,14 @@ class CrearTablaEmployees extends Migration
 			
             $table->string('name');
 			$table->string('surname');
-			$table->string('description') -> default("");
+			$table->text('description');
 			
             $table->string('email')->unique();
 			$table->string('phone');
 			$table->string('website') -> default("");
 			
-            $table->string('avatar_url') -> default("");
-			$table->string('cv_url') -> default("");
+            $table->text('avatar_url');
+			$table->text('cv_url');
 			
             $table->string('province');
             $table->string('city');

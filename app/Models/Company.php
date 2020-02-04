@@ -14,8 +14,8 @@ class Company extends Model
 	protected $fillable = [
 		"username", "password",
 		"email", "name", "sector", "description",
-		"phone", "email", "website",
-		"avatar_url", "cif",
+        "phone", "email", "website", "avatar_url", 
+        "cif", "contract_type", "min_salary", "max_salary",
 		"is_company", "uid"
 			
 	];
