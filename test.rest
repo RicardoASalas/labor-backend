@@ -25,18 +25,18 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "asdf",
-	"email": "asdf@labor.com",
+	"username": "Ruben",
+	"email": "ruben@labor.com",
 	"password": "1234",
-	"province": "Valencia",
-	"city": "Valencia",
+	"province": "Malaga",
+	"city": "Malaga",
 	"is_company": false,
-	"name": "Ricardo",
-	"surname": "Salas",
-	"nif": "25774146S",
+	"name": "Ruben",
+	"surname": "Lopez",
+	"nif": "257766546S",
 	"phone": "647009123",
 	"website": "www.asd.es",
-	"description": "test"
+	"description": "mi descripcion"
 }
 ###
 
@@ -48,13 +48,13 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "Empresa01",
-	"email": "empresa01@labor.es",
+	"username": "Empresa04",
+	"email": "empresa04@labor.es",
 	"password": "1234",
-	"sector": "IT",
+	"sector": "Hosteleria",
 	"is_company": true,
-	"name": "Empresa 01",
-	"cif": "25774146S",
+	"name": "Empresa 03",
+	"cif": "25775999S",
 	"phone": "647009123",
 	"website": "www.empresa01.es",
 	"description": "Soy la empresa 01"
@@ -73,7 +73,7 @@ Content-Type:application/json
 
 // Perfil de usuario
 
-GET {{url}}/user/c5e361cee7a87
+GET {{url}}/user/e5e3838776f1c2
 
 
 ###
@@ -101,7 +101,7 @@ POST {{url}}/user/login
 Content-Type:application/json
 
 {
-	"username":  "Icaruk",
+	"username":  "",
 	"password":  "1234"
 }
 ###
@@ -151,17 +151,19 @@ Content-Type:application/json
 
 // Aply to an offer
 
-POST  {{url}}/offer/aply/3/e5e361cea4952c
+POST  {{url}}/offer/apply/3/e5e37e4019b6e2
 Content-Type:application/json
 
 ###
 
 // Get aplyed offers
 
-GET  {{url}}/offer/aplyed/e5e361cea4952c
+GET  {{url}}/offer/applied/e5e37e4019b6e2
 Content-Type:application/json
 
 ###
+
+
 
 
 
