@@ -17,7 +17,7 @@ class OfferController extends Controller
     public function registerOffer(Request $request, $uid){
 		
     	$body = $request -> all();
-	
+        
 		
         try {
 			
@@ -69,28 +69,77 @@ class OfferController extends Controller
 
     public function findOffer(Request $request){
 		
-    	$keyword = $request['keyword'];
-        
-        // var_dump($keyword);
 		
         try {
-
-			if ($keyword == "") {
-				return  response()->json(Offer::get());
-			};
+            
+			// if ($keyword == "") {
+			// 	return  response()->json(Offer::get());
+			// };
 			
 			// Busco en la tabla ofertas cotejando las columnas con la keyword introducida
 			// var_dump($keyword);
+            
 
-			$result = Offer::query()
+            // Posibles filtros
+            $keyw = $request['keyword'];
+            $prov = $request['province'];
+            $city = $request['city'];
+            $sort = $request['sort'];
+            
+
+
+            $result = Offer::query()
+            -> when ( $keyw, function ($q, $keyw) {
+                $q -> where("title", "LIKE", "%{$keyw}%")
+                ->orWhere('description', 'LIKE', "%{$keyw}%");
+                
+            })
+            -> when ( $prov, function ($q, $prov) {
+                $q -> where("province", "=", $prov);
+            })
+            -> when ( $city, function ($q, $city) {
+                $q -> where("city", "=", $city);
+            })
+            -> when ( $sort == "new", function ($q, $sort) {
+                $q -> orderBy('created_at', 'DESC');
+            })
+            -> when ( $sort == "old", function ($q, $sort) {
+                $q -> orderBy('created_at', 'ASC');
+            })   
+            -> when ( $sort == "pop", function ($q, $sort) {
+                $q -> orderBy('times_applied', 'DESC');
+            })   
+            -> when ( $sort == "unpop", function ($q, $sort) {
+                $q -> orderBy('times_applied', 'ASC');
+            })   
+            
+
+            -> get();
+
+            foreach ($result as $offer) {
+				
+				$company_id = $offer->company_id;
+				
+				// Busco la empresa cotejando la id de la oferta
+				$company = Company::where("id", "=", $company_id) -> get();
+               
+                // Incorporo el nombre de la empresa en el objeto de la oferta
+               
+				$offer['_companyName'] = $company[0]->name;
+				
+			};
+            
+
+            return response() -> json($result);
+            
+            /*
 				->where('title', 'LIKE', "%{$keyword}%")
-				->orWhere('description', 'LIKE', "%{$keyword}%")
+				
 				->orWhere('sector', 'LIKE', "%{$keyword}%")
 				->orWhere('province', 'LIKE', "%{$keyword}%")
-				->orWhere('city', 'LIKE', "%{$keyword}%")->get();
-				
-				
-				return response() -> json($result);
+                ->orWhere('city', 'LIKE', "%{$keyword}%")->get();
+              */  
+                // Recorro el array de ofertas suscritas
 				
 			} catch(\Illuminate\Database\QueryException $e){
                 

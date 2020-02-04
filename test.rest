@@ -25,15 +25,15 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "Ruben",
-	"email": "ruben@labor.com",
+	"username": "Adrian",
+	"email": "adri@labor.com",
 	"password": "1234",
-	"province": "Malaga",
-	"city": "Malaga",
+	"province": "Valencia",
+	"city": "Castellon",
 	"is_company": false,
-	"name": "Ruben",
-	"surname": "Lopez",
-	"nif": "257766546S",
+	"name": "Adrian",
+	"surname": "Tortaja",
+	"nif": "257799946S",
 	"phone": "647009123",
 	"website": "www.asd.es",
 	"description": "mi descripcion"
@@ -48,16 +48,16 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "Empresa04",
-	"email": "empresa04@labor.es",
+	"username": "Empresa01",
+	"email": "empresa01@labor.es",
 	"password": "1234",
-	"sector": "Hosteleria",
+	"sector": "IT",
 	"is_company": true,
-	"name": "Empresa 03",
-	"cif": "25775999S",
+	"name": "Empresa 01",
+	"cif": "25775889S",
 	"phone": "647009123",
 	"website": "www.empresa01.es",
-	"description": "Soy la empresa 01"
+	"description": "Soy la empresa 02"
 }
 ###
 
@@ -123,11 +123,12 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e383e585299b
+POST {{url}}/offer/register/c5e398b68ca0e3
 Content-Type:application/json
 
 {
-	"title": "Votante de VOX",
+	"title": "Desarrollador",
+	"contract_type": "indefinito",
 	"description": "Fachon que te cagas",
 	"sector": "Burrilandia",
 	"experience": "2",
@@ -135,8 +136,8 @@ Content-Type:application/json
 	"max_salary":20000,
 	"workday":"jc",
 	"vacants":5,
-	"city": "Valencia",
-	"province":"Valencia"
+	"city": "Malaga",
+	"province":"Malaga"
 }
 ###
 // Find offers
@@ -145,7 +146,7 @@ POST {{url}}/offer/find
 Content-Type:application/json
 
 {
-	"keyword": ""
+	"keyword":"fach"
 }
 ###
 
@@ -177,14 +178,14 @@ Content-Type:application/json
 // Apply to an skill
 
 ###
-POST  {{url}}/skill/apply/5/2
+POST  {{url}}/skill/apply/3/1
 Content-Type:application/json
 
 ###
 
 // Get applied skills
 
-GET  {{url}}/skill/applied/2
+GET  {{url}}/skill/applied/1
 Content-Type:application/json
 
 ###

@@ -26,7 +26,7 @@ class CrearTablaCompanies extends Migration
             $table->string('phone');
 			$table->string('website') -> default("");
 			
-            $table->text('avatar_url');
+            $table->string('avatar_url') -> default("");;
 			$table->string('cif')->unique() -> default("");
 			
 			$table->boolean("is_company");

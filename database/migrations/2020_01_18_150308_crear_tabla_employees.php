@@ -26,8 +26,8 @@ class CrearTablaEmployees extends Migration
 			$table->string('phone');
 			$table->string('website') -> default("");
 			
-            $table->text('avatar_url');
-			$table->text('cv_url');
+            $table->string('avatar_url') -> default("");
+			$table->string('cv_url')-> default("");
 			
             $table->string('province');
             $table->string('city');

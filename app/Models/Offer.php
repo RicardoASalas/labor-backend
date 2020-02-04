@@ -20,7 +20,8 @@ class Offer extends Model
     protected $fillable = [
 		"company_id","title", "description", "sector",
         "experience", "min_salary", "max_salary",
-         "workday", "vacants","province", "city", "is_active"	
+         "workday", "vacants","province", "city", "is_active",
+         "contract_type", "times_applied"	
     ];
 
 	
