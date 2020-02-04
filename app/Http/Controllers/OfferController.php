@@ -20,28 +20,35 @@ class OfferController extends Controller
 	
 		
         try {
-				
-               
-                // Busco id_company cotajando la uid recibida
-
-                $company = Company::where("uid", "=", $uid) -> get();
-               
-                $company_id = $company[0]->id;
-
-                // Incorporo el id en el body recibido del front
-
-                $body['company_id'] = $company_id;
-
-                // Creo la oferta de trabajo
-                
-				$body = Offer::create($body);
-				
-				
+			
+			// Busco id_company cotajando la uid recibida
+			$company = Company::where("uid", "=", $uid) -> first();
+			
+			
+			// Si no se encuentra la compañía con la uid devuelvo error
+			if ( $company == null ) {
 				return response() -> json ([
-					"success" => "e",
+					"error" => "No se ha encontrado ninguna empresa con esa UID.",
+					"errorCode" => "offer_registerOffer_1"
 				]);
+			};
+			
+			
+			// Obtengo la id de la empresa
+			$company_id = $company["id"];
+			
+			// Incorporo la id en el body recibido del front
+			$body['company_id'] = $company_id;
+
+			// Creo la oferta de trabajo
+			$body = Offer::create($body);
+			
+			
+			return response() -> json ([
+				"success" => "e",
+			]);
 				
-			} catch(\Illuminate\Database\QueryException $e){
+		} catch(\Illuminate\Database\QueryException $e){
                 
                 $errorCode = $e->errorInfo[1];
                 
