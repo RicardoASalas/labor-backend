@@ -104,7 +104,7 @@ class OfferController extends Controller
 
     }
 
-    public function apply($offerId, $uid){
+    public function applyOffer($offerId, $uid){
 	
 		
         try {
@@ -149,56 +149,50 @@ class OfferController extends Controller
 	}
 	
 	public function getAppliedOffers($uid){
-	
 		
         try {
+			
+			// Busco el employee cotejando la uid recibida
+			$user = Employee::where("uid", "=", $uid) -> first();
+			
+			// Busco todas las ofertas a las que se ha inscrito el employee
+			$result = $user->offers;
+			
+			// Recorro el array de ofertas suscritas
+			foreach ($result as $offer) {
 				
-               
-                // Busco el employee cotejando la uid recibida
-
-                $user = Employee::where("uid", "=", $uid) -> first();
-
-                // Busco todas las ofertas a las que se ha inscrito el employee
-
-                $result = $user->offers;
-               
-                // Recorro el array de ofertas suscritas
-
-                foreach($result as $offer){
-
-                    $company_id = $offer->company_id;
-
-                    // Busco la empresa cotejando la id de la oferta
-
-                    $company = Company::where("id", "=", $company_id) -> get();   
-
-                    // Incorporo el nombre de la empresa en el objeto de la oferta
-
-                    $offer['companyName'] = $company[0]->name;
-
-                }
+				$company_id = $offer->company_id;
 				
-				return response() -> json($result);
+				// Busco la empresa cotejando la id de la oferta
+				$company = Company::where("id", "=", $company_id) -> get();
 				
-			} catch(\Illuminate\Database\QueryException $e){
-                
-                $errorCode = $e->errorInfo[1];
-                
-                
-                if ($errorCode == 1062) {
-                    return response()->json([
-                        'error' => "no se encontro ningun resultado",
-                        'errorCode' => "company_find_1"
-                    ], 404);            
-                };
-                
-                
-                return $e->errorInfo;
+				// Incorporo el nombre de la empresa en el objeto de la oferta
+				$offer['_companyName'] = $company[0]->name;
+				
+			};
+			
+			return response() -> json($result);
+			
+		} catch(\Illuminate\Database\QueryException $e){
+              
+			$errorCode = $e->errorInfo[1];
+			
+			
+			if ($errorCode == 1062) {
+				return response()->json([
+					'error' => "No se ha encontrado ningún usuario.",
+					'errorCode' => "offer_getAppliedOffers_1"
+				], 404);
+			};
+			
+			
+			return $e->errorInfo;
 			
 		};
 	}
-
-    
+	
+	
+	
     /**
      * Display a listing of the resource.
      *
