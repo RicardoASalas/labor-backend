@@ -123,13 +123,13 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e3614f8358bb
+POST {{url}}/offer/register/c5e383e585299b
 Content-Type:application/json
 
 {
-	"title": "torero",
-	"description": "el curro del futuro",
-	"sector": "tecnologico",
+	"title": "Votante de VOX",
+	"description": "Fachon que te cagas",
+	"sector": "Burrilandia",
 	"experience": "2",
 	"min_salary":10000,
 	"max_salary":20000,
@@ -177,14 +177,14 @@ Content-Type:application/json
 // Apply to an skill
 
 ###
-POST  {{url}}/skill/apply/3/e5e37e4019b6e2
+POST  {{url}}/skill/apply/5/2
 Content-Type:application/json
 
 ###
 
 // Get applied skills
 
-GET  {{url}}/skill/applied/e5e37e4019b6e2
+GET  {{url}}/skill/applied/2
 Content-Type:application/json
 
 ###

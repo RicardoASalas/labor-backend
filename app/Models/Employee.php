@@ -53,7 +53,7 @@ class Employee extends Model
     }
     public function skills()
     {
-        return $this->belongsToMany('App\Models\Skill', 'offer_skills', 'employee_id', 'skill_id');
+        return $this->belongsToMany('App\Models\Skill', 'employees_skills', 'employee_id', 'skill_id');
     }
     
 

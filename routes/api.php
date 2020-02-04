@@ -45,8 +45,8 @@ Route::get('/offer/applied/{uid}','OfferController@getAppliedOffers');
 
 // Skill
 Route::get('/skill','SkillController@findSkills');
-Route::post('/skillapply/{skillId}/{uid}','SkillController@applySkill');
-Route::get('/skill/applied/{uid}','SkillController@getApplySkills');
+Route::post('/skill/apply/{skillId}/{uid}','SkillController@applySkill');
+Route::get('/skill/applied/{uid}','SkillController@getAppliedSkills');
 
 
 

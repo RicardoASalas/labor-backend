@@ -28,26 +28,27 @@ class SkillController extends Controller
 
                 // Busco el employee cotejando la uid recibida
 
-                $skillTaker = Employee::where("uid", "=", $uid) -> first();
+                $skillTaker = Employee::where("uid", "=", $uid) -> get();
 
                 // si no existe el employee busca la uid en offer
 
                if ( $skillTaker -> isEmpty() ) {
 
-                    $skillTaker = Offer::where("uid", "=", $uid) -> first();
+                    //$skillTaker = Offer::where("uid", "=", $uid) -> get();
+                    $skillTaker = Offer::where("id", "=", $uid) -> get();
 
                     // Me registro en la oferta añadiendo los id de oferta e id 
                     // de skill en la tabla intermedia
 
-                    $skill->ownerOffer()->attach($skillTaker->id);
+                    $skill->ownerOffer()->attach($skillTaker[0]->id);
                     
                     
 		        }else{
 
                     // Me registro en la oferta añadiendo los id de employee e id 
                     // de oferta en la tabla intermedia
-
-                    $skill->ownerEmployee()->attach($skillTaker->id);
+                    
+                    $skill->ownerEmployee()->attach($skillTaker[0]->id);
                 }
              
                 
@@ -65,7 +66,7 @@ class SkillController extends Controller
                 if ($errorCode == 1062) {
                     return response()->json([
                         'error' => "no se encontro ningun resultado",
-                        'errorCode' => "offer_find_1"
+                        'errorCode' => "skill_find_1"
                     ], 404);            
                 };
                 
@@ -87,30 +88,17 @@ class SkillController extends Controller
 
                  // si no existe el employee busca la uid en offer
  
-                if ( $skillTaker -> isEmpty() ) {
- 
-                     $skillTaker = Offer::where("uid", "=", $uid) -> first();
+                if ( $skillTaker == null ) {
+                  
+                    //  $skillTaker = Offer::where("uid", "=", $uid) -> first();
+                    $skillTaker = Offer::where("id", "=", $uid) -> first();
                 }
-
+               
                 // Busco todas las skills a las que se ha inscrito el employee u offer
 
-                $result = $skillTaker->skills;
-               
-                // Recorro el array de ofertas suscritas
 
-                foreach($result as $offer){
-
-                    $company_id = $offer->company_id;
-
-                    // Busco la empresa cotejando la id de la oferta
-
-                    $company = Company::where("id", "=", $company_id) -> get();   
-
-                    // Incorporo el nombre de la empresa en el objeto de la oferta
-
-                    $offer['companyName'] = $company[0]->name;
-
-                }
+                $result = $skillTaker ->skills; 
+                
 				
 				return response() -> json($result);
 				
