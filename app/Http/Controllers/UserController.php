@@ -80,7 +80,7 @@ class UserController extends Controller {
 			
             if ($errorCode == 1062) {
 				return response()->json([
-					'error' => "El usuario, el email o el nif/cif ya existen.",
+					'error' => "El usuario, email, nif o cif ya existen.",
 					'errorCode' => "user_register_1"
 				], 401);            
 			};

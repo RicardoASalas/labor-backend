@@ -32,7 +32,7 @@ Content-Type:application/json
 	"city": "Castellon",
 	"is_company": false,
 	"name": "Adrian",
-	"surname": "Tortaja",
+	"surname": "Tortajada",
 	"nif": "257799946S",
 	"phone": "647009123",
 	"website": "www.asd.es",
