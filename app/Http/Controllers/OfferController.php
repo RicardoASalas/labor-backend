@@ -16,7 +16,10 @@ class OfferController extends Controller
 
     public function registerOffer(Request $request, $uid){
 		
-    	$body = $request -> all();
+        $body = $request -> all();
+        
+        // Genero un UID
+		$body["uid"] = uniqid("c");	
         
 		
         try {
@@ -160,19 +163,19 @@ class OfferController extends Controller
 
     }
 
-    public function applyOffer($offerId, $uid){
+    public function applyOffer($offerUid, $userUid){
 	
 		
         try {
                
                 // Busco el employee cotejando la uid recibida
 
-                $user = Employee::where("uid", "=", $uid) -> first();
+                $user = Employee::where("uid", "=", $userUid) -> first();
                
 
-                // busco la oferta cotejando con su id 
+                // busco la oferta cotejando con la uid recibida
 
-                $offer = Offer::find($offerId);
+                $offer = Offer::where("uid", "=", $offerUid) -> first();
                 
                 // Me registro en la oferta añadiendo los id de usuario e id 
                 // de oferta en la tabla intermedia
@@ -243,6 +246,53 @@ class OfferController extends Controller
 			
 			
 			return $e->errorInfo;
+			
+		};
+    }
+    
+    public function cancelOffer($offerUid, $userUid){
+	
+		
+        try {
+               
+                // Busco el employee cotejando la uid recibida
+
+                $user = Employee::where("uid", "=", $userUid) -> first();
+               
+
+                // busco la oferta cotejando con la uid recibida
+
+                $offer = Offer::where("uid", "=", $offerUid) -> first();
+                
+                // Borro mi suscripcion a la oferta.
+                
+                // $offer->candidates()->ditach($user->id);
+                // $user->offers($offerUid)->detach($offer);
+                // $offerId = $offer->id;
+                
+                $offer->candidates()->detach($user['employee_id']);
+               
+                
+				
+				
+				return response() -> json([
+                    "success" => "e",
+                ]);
+				
+			} catch(\Illuminate\Database\QueryException $e){
+                
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "offer_find_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
 			
 		};
 	}

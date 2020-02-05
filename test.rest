@@ -123,21 +123,21 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e398b68ca0e3
+POST {{url}}/offer/register/c5e39d9c225df7
 Content-Type:application/json
 
 {
-	"title": "Desarrollador",
+	"title": "Mamporrero",
 	"contract_type": "indefinito",
-	"description": "Fachon que te cagas",
-	"sector": "Burrilandia",
-	"experience": "2",
-	"min_salary":10000,
-	"max_salary":20000,
+	"description": "se busca amante masturbador",
+	"sector": "Equino",
+	"experience": "15",
+	"min_salary":10,
+	"max_salary":20,
 	"workday":"jc",
 	"vacants":5,
-	"city": "Malaga",
-	"province":"Malaga"
+	"city": "Valencia",
+	"province":"Valencia"
 }
 ###
 // Find offers
@@ -152,7 +152,7 @@ Content-Type:application/json
 
 // Apply to an offer
 
-POST  {{url}}/offer/apply/3/e5e37e4019b6e2
+POST  {{url}}/offer/apply/c5e39e2cf8eb70/e5e39d9c737929
 Content-Type:application/json
 
 ###
@@ -163,6 +163,10 @@ GET  {{url}}/offer/applied/e5e37e4019b6e2
 Content-Type:application/json
 
 ###
+
+// cancel offer
+GET  {{url}}/offer/applied/e5e37e4019b6e2
+Content-Type:application/json
 
 // --------------------------------
 // S K I L L S
@@ -178,7 +182,7 @@ Content-Type:application/json
 // Apply to an skill
 
 ###
-POST  {{url}}/skill/apply/3/1
+POST  {{url}}/skill/apply/3/e5e39d9c737929
 Content-Type:application/json
 
 ###

@@ -38,10 +38,12 @@ Route::post('/user/find','UserController@findCompany');
 
 
 // Offer
-Route::post('/offer/register/{uid}','OfferController@registerOffer');
+Route::post('/offer/register/{userUid}','OfferController@registerOffer');
 Route::post('/offer/find','OfferController@findOffer');
-Route::post('/offer/apply/{offerId}/{uid}','OfferController@applyOffer');
-Route::get('/offer/applied/{uid}','OfferController@getAppliedOffers');
+Route::post('/offer/apply/{offerUid}/{userUid}','OfferController@applyOffer');
+Route::get('/offer/applied/{userUid}','OfferController@getAppliedOffers');
+Route::get('/offer/cancel/{offerUid}/{userUid}','OfferController@cancelOffer');
+
 
 // Skill
 Route::get('/skill','SkillController@findSkills');

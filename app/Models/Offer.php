@@ -21,7 +21,7 @@ class Offer extends Model
 		"company_id","title", "description", "sector",
         "experience", "min_salary", "max_salary",
          "workday", "vacants","province", "city", "is_active",
-         "contract_type", "times_applied"	
+         "contract_type", "times_applied", "uid", "last_time_applied"
     ];
 
 	

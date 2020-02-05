@@ -35,7 +35,7 @@ class SkillController extends Controller
                if ( $skillTaker -> isEmpty() ) {
 
                     //$skillTaker = Offer::where("uid", "=", $uid) -> get();
-                    $skillTaker = Offer::where("id", "=", $uid) -> get();
+                    $skillTaker = Offer::where("uid", "=", $uid) -> get();
 
                     // Me registro en la oferta añadiendo los id de oferta e id 
                     // de skill en la tabla intermedia
@@ -77,7 +77,7 @@ class SkillController extends Controller
 	}
 	
 	public function getAppliedSkills($uid){
-	
+
 		
         try {
 				
@@ -87,11 +87,10 @@ class SkillController extends Controller
                  $skillTaker = Employee::where("uid", "=", $uid) -> first();
 
                  // si no existe el employee busca la uid en offer
- 
+                
                 if ( $skillTaker == null ) {
-                  
-                    //  $skillTaker = Offer::where("uid", "=", $uid) -> first();
-                    $skillTaker = Offer::where("id", "=", $uid) -> first();
+                    
+                    $skillTaker = Offer::where("uid", "=", $uid) -> first();
                 }
                
                 // Busco todas las skills a las que se ha inscrito el employee u offer
