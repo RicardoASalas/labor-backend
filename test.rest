@@ -152,20 +152,20 @@ Content-Type:application/json
 
 // Apply to an offer
 
-POST  {{url}}/offer/apply/c5e39e2cf8eb70/e5e39d9c737929
+POST  {{url}}/offer/apply/c5e39d9ea7a214/e5e39d9c737929
 Content-Type:application/json
 
 ###
 
 // Get applied offers
 
-GET  {{url}}/offer/applied/e5e37e4019b6e2
+GET  {{url}}/offer/applied/e5e39d9c737929
 Content-Type:application/json
 
 ###
 
 // cancel offer
-GET  {{url}}/offer/applied/e5e37e4019b6e2
+GET  {{url}}/offer/cancel/e5e39d9c737929/e5e39d9c737929
 Content-Type:application/json
 
 // --------------------------------
