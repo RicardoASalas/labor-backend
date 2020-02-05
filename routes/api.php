@@ -43,12 +43,15 @@ Route::post('/offer/find','OfferController@findOffer');
 Route::post('/offer/apply/{offerUid}/{userUid}','OfferController@applyOffer');
 Route::get('/offer/applied/{userUid}','OfferController@getAppliedOffers');
 Route::get('/offer/cancel/{offerUid}/{userUid}','OfferController@cancelOffer');
+Route::get('/offer/status/{offerUid}/{userUid}/{status}','OfferController@changeStatus');
 
 
 // Skill
 Route::get('/skill','SkillController@findSkills');
 Route::post('/skill/apply/{skillId}/{uid}','SkillController@applySkill');
 Route::get('/skill/applied/{uid}','SkillController@getAppliedSkills');
+Route::get('/skill/delete/{skillId}/{uid}','SkillController@deleteSkill');
+
 
 
 
