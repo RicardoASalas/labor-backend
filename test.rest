@@ -152,7 +152,7 @@ Content-Type:application/json
 
 // Apply to an offer
 
-POST  {{url}}/offer/apply/c5e39d9ea7a214/e5e39d9c737929
+POST  {{url}}/offer/apply/c5e39e2cf8eb70/e5e39d9c737929
 Content-Type:application/json
 
 ###
@@ -165,7 +165,13 @@ Content-Type:application/json
 ###
 
 // cancel offer
-GET  {{url}}/offer/cancel/e5e39d9c737929/e5e39d9c737929
+GET  {{url}}/offer/cancel/c5e39e2cf8eb70/e5e39d9c737929
+Content-Type:application/json
+
+###
+
+// change offer status
+GET  {{url}}/offer/status/c5e39d9ea7a214/e5e39d9c737929/2
 Content-Type:application/json
 
 // --------------------------------
@@ -193,6 +199,10 @@ GET  {{url}}/skill/applied/1
 Content-Type:application/json
 
 ###
+
+// delete skill
+GET  {{url}}/skill/delete/1/c5e39d9ea7a214
+Content-Type:application/json
 
 
 

@@ -117,5 +117,64 @@ class SkillController extends Controller
                 return $e->errorInfo;
 			
 		};
+    }
+    public function deleteSkill($skillId, $uid){
+	
+		
+        try {
+
+                // busco la skill cotejando con su id 
+
+                $skill = Skill::find($skillId);
+
+                // Busco el employee cotejando la uid recibida
+
+                $skillTaker = Employee::where("uid", "=", $uid) -> get();
+
+                // si no existe el employee busca la uid en offer
+
+               if ( $skillTaker -> isEmpty() ) {
+
+                    
+                    $skillTaker = Offer::where("uid", "=", $uid) -> get();
+                
+
+                    // Me registro en la oferta añadiendo los id de oferta e id 
+                    // de skill en la tabla intermedia
+
+                    $skill->ownerOffer()->detach($skillTaker[0]->id);
+                    
+                    
+		        }else{
+
+                    // Me registro en la oferta añadiendo los id de employee e id 
+                    // de oferta en la tabla intermedia
+                    
+                    $skill->ownerEmployee()->detach($skillTaker[0]->id);
+                }
+             
+                
+				
+				
+				return response() -> json([
+                    "success" => "e",
+                ]);
+				
+			} catch(\Illuminate\Database\QueryException $e){
+                
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "skill_find_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
+			
+		};
 	}
 }

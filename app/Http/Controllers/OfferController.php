@@ -266,11 +266,51 @@ class OfferController extends Controller
                 
                 // Borro mi suscripcion a la oferta.
                 
-                // $offer->candidates()->ditach($user->id);
-                // $user->offers($offerUid)->detach($offer);
-                // $offerId = $offer->id;
+                $offer->candidates()->detach($user->id);
+                		
+				
+				return response() -> json([
+                    "success" => "e",
+                ]);
+				
+			} catch(\Illuminate\Database\QueryException $e){
                 
-                $offer->candidates()->detach($user['employee_id']);
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "offer_find_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
+			
+		};
+    }
+    
+    public function changeStatus($offerUid, $userUid, $status){
+	
+		
+        try {
+               
+                // Busco el employee cotejando la uid recibida
+
+                $user = Employee::where("uid", "=", $userUid) -> first();
+               
+
+                // busco la oferta cotejando con la uid recibida
+
+                $offer = Offer::where("uid", "=", $offerUid) -> first();
+
+                // cambio el status de la oferta en la tabla intermedia
+                
+                $offer->candidates()->updateExistingPivot($user, ['status' => $status]);
+               
+                // $user->relations()->attach($plan_id, ['child' => $childid]); con este comando
+                //se crearia un registro nuevo con el campo pivot pasado por parametro
                
                 
 				
