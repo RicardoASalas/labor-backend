@@ -116,14 +116,23 @@ class UserController extends Controller {
 		
 		
 		
-		// Busco
+		// Busco en empleados
 		$user = DB::table('employees')
 		-> where('username', '=', $body["username"])
 		-> orWhere('email', $body["username"])
 		-> get();
 		
 		
-		// Compruebo si encuentra algo
+		// Busco en empresas
+		if ($user -> isEmpty()) {
+			$user = DB::table('companies')
+			-> where('username', '=', $body["username"])
+			-> orWhere('email', $body["username"])
+			-> get();
+		};
+		
+		
+		// ¿He encontrado algo?
 		if ($user -> isEmpty()) {
 			
 			return response() -> json([

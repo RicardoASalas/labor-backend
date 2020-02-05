@@ -101,7 +101,7 @@ POST {{url}}/user/login
 Content-Type:application/json
 
 {
-	"username":  "",
+	"username":  "empresa",
 	"password":  "1234"
 }
 ###
