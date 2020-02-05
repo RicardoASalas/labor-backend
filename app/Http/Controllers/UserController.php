@@ -82,7 +82,7 @@ class UserController extends Controller {
 				return response()->json([
 					'error' => "El usuario, el email o el nif/cif ya existen.",
 					'errorCode' => "user_register_1"
-				], 400);            
+				], 401);            
 			};
 			
 			
@@ -129,7 +129,7 @@ class UserController extends Controller {
 			return response() -> json([
 				"errorCode" => "user_login_1",
 				"error" => "Wrong username, email or password.",
-			]);
+			], 401);
 			
 		} else {
 			
