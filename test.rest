@@ -25,15 +25,15 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "Adrian",
-	"email": "adri@labor.com",
+	"username": "Manolo",
+	"email": "manolo@labor.com",
 	"password": "1234",
 	"province": "Valencia",
 	"city": "Castellon",
 	"is_company": false,
-	"name": "Adrian",
+	"name": "Pepe",
 	"surname": "Tortaja",
-	"nif": "257799946S",
+	"nif": "257799943S",
 	"phone": "647009123",
 	"website": "www.asd.es",
 	"description": "mi descripcion"
@@ -188,20 +188,24 @@ Content-Type:application/json
 // Apply to an skill
 
 ###
-POST  {{url}}/skill/apply/3/e5e39d9c737929
+POST  {{url}}/skill/apply/e5e39d9c737929
 Content-Type:application/json
+
+{
+	"skill":[1,2,2,3,3]
+}
 
 ###
 
 // Get applied skills
 
-GET  {{url}}/skill/applied/1
+GET  {{url}}/skill/applied/e5e39d9c737929
 Content-Type:application/json
 
 ###
 
 // delete skill
-GET  {{url}}/skill/delete/1/c5e39d9ea7a214
+GET  {{url}}/skill/delete/1/e5e39d9c737929
 Content-Type:application/json
 
 

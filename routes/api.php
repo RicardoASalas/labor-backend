@@ -48,9 +48,9 @@ Route::get('/offer/status/{offerUid}/{userUid}/{status}','OfferController@change
 
 // Skill
 Route::get('/skill','SkillController@findSkills');
-Route::post('/skill/apply/{skillId}/{uid}','SkillController@applySkill');
+Route::post('/skill/apply/{uid}','SkillController@applySkill');
 Route::get('/skill/applied/{uid}','SkillController@getAppliedSkills');
-Route::get('/skill/delete/{skillId}/{uid}','SkillController@deleteSkill');
+// Route::get('/skill/delete/{skillId}/{uid}','SkillController@deleteSkill'); EN DESUSO
 
 
 
