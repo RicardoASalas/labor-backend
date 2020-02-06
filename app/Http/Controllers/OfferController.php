@@ -258,7 +258,52 @@ class OfferController extends Controller
 			$user = Company::where("uid", "=", $uid) -> first();
 			
 			// Busco todas las ofertas que ha creado la compañia
-			$result = Offer::where("company_id", "=", $user->id)->get();
+            $result = Offer::where("company_id", "=", $user->id)->get();
+            
+			
+			return response() -> json($result);
+			
+		} catch(\Illuminate\Database\QueryException $e){
+              
+			$errorCode = $e->errorInfo[1];
+			
+			
+			if ($errorCode == 1062) {
+				return response()->json([
+					'error' => "No se ha encontrado ninguna oferta.",
+					'errorCode' => "offer_getCreatedOffers_1"
+				], 404);
+			};
+			
+			
+			return $e->errorInfo;
+			
+		};
+    }
+
+    public function getCandidates($uid){
+		
+        try {
+			
+			// Busco la empresa cotejando la uid recibida
+			$user = Company::where("uid", "=", $uid) -> first();
+			
+			// Busco todas las ofertas que ha creado la compañia
+            $offers = Offer::where("company_id", "=", $user->id)->get();
+            
+            // Busco a los empleados que estan suscritos a mis ofertas
+
+            
+            $result=[];
+            foreach ($offers as &$offer) {
+
+                        array_push($result, $offer ->candidates );
+
+                    }
+
+                    // borramos la referencia a cada elemento del array
+                    unset($offer);
+
 			
 			
 			return response() -> json($result);

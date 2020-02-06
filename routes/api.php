@@ -46,6 +46,7 @@ Route::get('/offer/cancel/{offerUid}/{userUid}','OfferController@cancelOffer');
 Route::get('/offer/status/{offerUid}/{userUid}/{status}','OfferController@changeStatus');
 Route::get('/offer/created/{userUid}','OfferController@getCreatedOffers');
 Route::get('/offer/delete/{offerUid}','OfferController@deleteOffer');
+Route::get('/offer/candidates/{offerUid}','OfferController@getCandidates');
 
 
 // Skill

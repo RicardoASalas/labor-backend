@@ -60,16 +60,16 @@ POST {{url}}/user/register
 Content-Type:application/json
 
 {
-	"username": "Empresa01",
-	"email": "empresa01@labor.es",
+	"username": "Empresa02",
+	"email": "empresa02@labor.es",
 	"password": "1234",
 	"sector": "IT",
 	"is_company": true,
-	"name": "Empresa 01",
-	"cif": "25775889S",
+	"name": "Empresa 02",
+	"cif": "25775789S",
 	"phone": "647009123",
-	"website": "www.empresa01.es",
-	"description": "Soy la empresa 02"
+	"website": "www.empresa02.es",
+	"description": "Soy la empresa 03"
 }
 ###
 
@@ -135,21 +135,21 @@ GET {{url}}/user/logout?token={{token}}
 
 // Register offer
 
-POST {{url}}/offer/register/c5e39d9c225df7
+POST {{url}}/offer/register/c5e3c07ce964ac
 Content-Type:application/json
 
 {
-	"title": "Mamporrero",
+	"title": "Camarero",
 	"contract_type": "indefinito",
-	"description": "se busca amante masturbador",
-	"sector": "Equino",
-	"experience": "15",
+	"description": "con experiencia",
+	"sector": "hosteleria",
+	"experience": "1",
 	"min_salary":10,
 	"max_salary":20,
 	"workday":"jc",
-	"vacants":5,
-	"city": "Valencia",
-	"province":"Valencia"
+	"vacants":3,
+	"city": "Malaga",
+	"province":"Malaga"
 }
 ###
 // Find offers
@@ -164,7 +164,7 @@ Content-Type:application/json
 
 // Apply to an offer
 
-POST  {{url}}/offer/apply/c5e39e2cf8eb70/e5e39d9c737929
+POST  {{url}}/offer/apply/c5e3c0b62c1f4c/e5e3b2656a349b
 Content-Type:application/json
 
 ###
@@ -177,13 +177,21 @@ Content-Type:application/json
 ###
 // Get created offers
 
-GET  {{url}}/offer/created/c5e39d9c225df7
+GET  {{url}}/offer/created/c5e3c07ce964ac
 Content-Type:application/json
 
 ###
 
+// Get candidates offers
+
+GET  {{url}}/offer/candidates/c5e3c07ce964ac
+Content-Type:application/json
+
+###
+
+
 // cancel offer
-GET  {{url}}/offer/cancel/c5e39e2cf8eb70/e5e39d9c737929
+GET  {{url}}/offer/cancel/c5e3c08194a7aa/e5e39d9c737929
 Content-Type:application/json
 
 ###
