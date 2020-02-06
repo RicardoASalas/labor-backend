@@ -304,9 +304,11 @@ class OfferController extends Controller
                         //recorro el array de candidatos 
 
                         foreach ($hardcodeCandidates as &$hardcodeCandidate){
-                            //asigno a cada uno de ellos el titulo
+                            //asigno a cada uno de ellos el titulo y offerUid
                             //de la oferta a la que se han inscrito
                             $hardcodeCandidate['_offerTitle'] = $offer ->title;
+
+                            $hardcodeCandidate['_offerUid'] = $offer ->uid;
                         }
                         //borro la referencia del for each
                         unset($hardcodeCandidate);
