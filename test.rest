@@ -33,10 +33,13 @@ Content-Type:application/json
 	"is_company": false,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"name": "Pepe",
 	"surname": "Tortaja",
 	"nif": "257799943S",
 =======
+=======
+>>>>>>> 19f4c54564d8892323a098c3c8e59b223511c4b5
 =======
 >>>>>>> 19f4c54564d8892323a098c3c8e59b223511c4b5
 	"name": "Adrian",

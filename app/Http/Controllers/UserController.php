@@ -80,9 +80,9 @@ class UserController extends Controller {
 			
             if ($errorCode == 1062) {
 				return response()->json([
-					'error' => "El usuario, el email o el nif/cif ya existen.",
+					'error' => "El usuario, email, nif o cif ya existen.",
 					'errorCode' => "user_register_1"
-				], 400);            
+				], 401);            
 			};
 			
 			
@@ -116,20 +116,29 @@ class UserController extends Controller {
 		
 		
 		
-		// Busco
+		// Busco en empleados
 		$user = DB::table('employees')
 		-> where('username', '=', $body["username"])
 		-> orWhere('email', $body["username"])
 		-> get();
 		
 		
-		// Compruebo si encuentra algo
+		// Busco en empresas
+		if ($user -> isEmpty()) {
+			$user = DB::table('companies')
+			-> where('username', '=', $body["username"])
+			-> orWhere('email', $body["username"])
+			-> get();
+		};
+		
+		
+		// ¿He encontrado algo?
 		if ($user -> isEmpty()) {
 			
 			return response() -> json([
 				"errorCode" => "user_login_1",
 				"error" => "Wrong username, email or password.",
-			]);
+			], 401);
 			
 		} else {
 			
