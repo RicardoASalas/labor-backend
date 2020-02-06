@@ -128,7 +128,8 @@ class OfferController extends Controller
                
                 // Incorporo el nombre de la empresa en el objeto de la oferta
                
-				$offer['_companyName'] = $company[0]->name;
+                $offer['_companyName'] = $company[0]->name;
+                $offer['_companyUid'] = $company[0]->uid;
 				
 			};
             
