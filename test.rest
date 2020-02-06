@@ -32,10 +32,13 @@ Content-Type:application/json
 	"city": "Castellon",
 	"is_company": false,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	"name": "Pepe",
 	"surname": "Tortaja",
 	"nif": "257799943S",
 =======
+=======
+>>>>>>> 19f4c54564d8892323a098c3c8e59b223511c4b5
 	"name": "Adrian",
 	"surname": "Tortajada",
 	"nif": "257799946S",
