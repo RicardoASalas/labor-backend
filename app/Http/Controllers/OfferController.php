@@ -249,6 +249,37 @@ class OfferController extends Controller
 			
 		};
     }
+
+    public function getCreatedOffers($uid){
+		
+        try {
+			
+			// Busco la empresa cotejando la uid recibida
+			$user = Company::where("uid", "=", $uid) -> first();
+			
+			// Busco todas las ofertas que ha creado la compañia
+			$result = Offer::where("company_id", "=", $user->id)->get();
+			
+			
+			return response() -> json($result);
+			
+		} catch(\Illuminate\Database\QueryException $e){
+              
+			$errorCode = $e->errorInfo[1];
+			
+			
+			if ($errorCode == 1062) {
+				return response()->json([
+					'error' => "No se ha encontrado ninguna oferta.",
+					'errorCode' => "offer_getCreatedOffers_1"
+				], 404);
+			};
+			
+			
+			return $e->errorInfo;
+			
+		};
+    }
     
     public function cancelOffer($offerUid, $userUid){
 	
@@ -267,6 +298,46 @@ class OfferController extends Controller
                 // Borro mi suscripcion a la oferta.
                 
                 $offer->candidates()->detach($user->id);
+                		
+				
+				return response() -> json([
+                    "success" => "e",
+                ]);
+				
+			} catch(\Illuminate\Database\QueryException $e){
+                
+                $errorCode = $e->errorInfo[1];
+                
+                
+                if ($errorCode == 1062) {
+                    return response()->json([
+                        'error' => "no se encontro ningun resultado",
+                        'errorCode' => "offer_find_1"
+                    ], 404);            
+                };
+                
+                
+                return $e->errorInfo;
+			
+		};
+    }
+
+    public function deleteOffer($offerUid){
+	
+		
+        try {
+               
+
+                // busco la oferta cotejando con la uid recibida
+
+                $offer = Offer::where("uid", "=", $offerUid) -> first();
+
+                //borro las relaciones de esta oferta con usuarios
+                $offer->candidates()->detach();
+                
+                // Borro mi la oferta.
+                
+                $offer->delete();
                 		
 				
 				return response() -> json([

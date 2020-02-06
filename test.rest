@@ -175,6 +175,12 @@ GET  {{url}}/offer/applied/e5e39d9c737929
 Content-Type:application/json
 
 ###
+// Get created offers
+
+GET  {{url}}/offer/created/c5e39d9c225df7
+Content-Type:application/json
+
+###
 
 // cancel offer
 GET  {{url}}/offer/cancel/c5e39e2cf8eb70/e5e39d9c737929
@@ -185,6 +191,13 @@ Content-Type:application/json
 // change offer status
 GET  {{url}}/offer/status/c5e39d9ea7a214/e5e39d9c737929/2
 Content-Type:application/json
+###
+
+// delete offer
+GET  {{url}}/offer/delete/c5e39e2cf8eb70
+Content-Type:application/json
+
+###
 
 // --------------------------------
 // S K I L L S
