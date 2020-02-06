@@ -31,9 +31,15 @@ Content-Type:application/json
 	"province": "Valencia",
 	"city": "Castellon",
 	"is_company": false,
+<<<<<<< HEAD
 	"name": "Pepe",
 	"surname": "Tortaja",
 	"nif": "257799943S",
+=======
+	"name": "Adrian",
+	"surname": "Tortajada",
+	"nif": "257799946S",
+>>>>>>> 19f4c54564d8892323a098c3c8e59b223511c4b5
 	"phone": "647009123",
 	"website": "www.asd.es",
 	"description": "mi descripcion"
@@ -101,7 +107,7 @@ POST {{url}}/user/login
 Content-Type:application/json
 
 {
-	"username":  "",
+	"username":  "empresa",
 	"password":  "1234"
 }
 ###
