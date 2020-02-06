@@ -296,9 +296,23 @@ class OfferController extends Controller
 
             
             $result=[];
-            foreach ($offers as &$offer) {
+            foreach ($offers as &$offer) {                       
+                        
+                        //Meto los candidatos en una variable
+                        $hardcodeCandidates = $offer ->candidates;
 
-                        array_push($result, $offer ->candidates );
+                        //recorro el array de candidatos 
+
+                        foreach ($hardcodeCandidates as &$hardcodeCandidate){
+                            //asigno a cada uno de ellos el titulo
+                            //de la oferta a la que se han inscrito
+                            $hardcodeCandidate['_offerTitle'] = $offer ->title;
+                        }
+                        //borro la referencia del for each
+                        unset($hardcodeCandidate);
+
+                        //meto en un array todos los candidatos hardcodeados
+                        array_push($result, $hardcodeCandidates );
 
                     }
 
