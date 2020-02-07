@@ -130,8 +130,11 @@ class OfferController extends Controller
                
                 $offer['_companyName'] = $company[0]->name;
                 $offer['_companyUid'] = $company[0]->uid;
+                $offer['_companyAvatar'] = $company[0]->avatar_url;
 				
-			};
+            };
+            
+            unset($offer);
             
 
             return response() -> json($result);
@@ -227,9 +230,16 @@ class OfferController extends Controller
 				$company = Company::where("id", "=", $company_id) -> get();
 				
 				// Incorporo el nombre de la empresa en el objeto de la oferta
-				$offer['_companyName'] = $company[0]->name;
-				
-			};
+                $offer['_companyName'] = $company[0]->name;
+                
+                $offer['_companyUid'] = $company[0]->uid;
+
+                $offer['_companyAvatar'] = $company[0]->avatar_url;
+                    
+                
+            };
+            
+            unset($offer);
 			
 			return response() -> json($result);
 			
@@ -260,7 +270,23 @@ class OfferController extends Controller
 			
 			// Busco todas las ofertas que ha creado la compañia
             $result = Offer::where("company_id", "=", $user->id)->get();
+
+            foreach ($result as $offer) {
+				
+				$company_id = $offer->company_id;
+				
+				// Busco la empresa cotejando la id de la oferta
+				$company = Company::where("id", "=", $company_id) -> get();
+               
+                // Incorporo el nombre de la empresa en el objeto de la oferta
+               
+                $offer['_companyName'] = $company[0]->name;
+                $offer['_companyUid'] = $company[0]->uid;
+                $offer['_companyAvatar'] = $company[0]->avatar_url;
+				
+			};
             
+            unset($offer);
 			
 			return response() -> json($result);
 			
@@ -309,6 +335,8 @@ class OfferController extends Controller
                             $hardcodeCandidate['_offerTitle'] = $offer ->title;
 
                             $hardcodeCandidate['_offerUid'] = $offer ->uid;
+
+                            $hardcodeCandidate['_status'] = $hardcodeCandidate->pivot->status;
                         }
                         //borro la referencia del for each
                         unset($hardcodeCandidate);

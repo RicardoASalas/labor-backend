@@ -90,15 +90,11 @@ GET {{url}}/user/e5e3838776f1c2
 
 ###
 
-POST  {{url}}/user/editProfile/e5e32fa3e44383
+POST  {{url}}/user/editProfile/c5e39d9c225df7
 Content-Type:application/json
 
 {
-	"name": "Manolo",
-	"surname": "El del bombo",
-	"email": "Manolo@labor.es",
-	"province": "Murcia",
-	"city": "Gandia"
+	"name": "c5e39d9c225df7"
 }
 
 
@@ -184,7 +180,7 @@ Content-Type:application/json
 
 // Get candidates offers
 
-GET  {{url}}/offer/candidates/c5e3c07ce964ac
+GET  {{url}}/offer/candidates/c5e39d9c225df7
 Content-Type:application/json
 
 ###

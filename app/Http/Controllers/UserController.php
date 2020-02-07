@@ -204,30 +204,26 @@ class UserController extends Controller {
 
 		// Busco empleados
 		$user = Employee::where("uid", "=", $uid) -> first();
-		$user->update($body);
-		$user->save();
-		return response() -> json ([
-			"success" => "e",
-		]);
 		
 		
 		// Si no encuentro, busco empresas
-		if ( $user -> isEmpty() ) {
+		if ( $user == null ) {
 			$user = Company::where("uid", "=", $uid) -> first();
-			$user->update($body);
-			$user->save();
-			return response() -> json ([
-				"success" => "e",
-			]);
+		
 		};
 		
 		
 		// Si encuentro algo, lo edito
-		if ( $user -> isEmpty() ) {
+		if ( $user == null ) {
 
-			return response() -> json([]);
+			return response() -> json([
+				"usuariono encontrado" => "e",
+			]);
+
 		} else {
-			
+
+			$user->update($body);
+			$user->save();
 						
 			return response() -> json ($user);
 			
