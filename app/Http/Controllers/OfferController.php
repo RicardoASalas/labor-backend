@@ -84,14 +84,18 @@ class OfferController extends Controller
             
 
             // Posibles filtros
+            $uid = $request['uid'];
             $keyw = $request['keyword'];
             $prov = $request['province'];
             $city = $request['city'];
             $sort = $request['sort'];
             
-
-
+			
+			
             $result = Offer::query()
+            -> when ( $uid, function ($q, $uid) {
+                $q -> where("uid", "=", $uid);
+            })
             -> when ( $keyw, function ($q, $keyw) {
                 $q -> where("title", "LIKE", "%{$keyw}%")
                 ->orWhere('description', 'LIKE', "%{$keyw}%")
