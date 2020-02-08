@@ -154,7 +154,7 @@ POST {{url}}/offer/find
 Content-Type:application/json
 
 {
-	"keyword":"fach"
+	"keyword":"c5e39d9ea7a214"
 }
 ###
 
