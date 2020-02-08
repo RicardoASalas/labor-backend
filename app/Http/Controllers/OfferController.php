@@ -219,8 +219,19 @@ class OfferController extends Controller
 			// Busco el employee cotejando la uid recibida
 			$user = Employee::where("uid", "=", $uid) -> first();
 			
+			
+			// Si no encuentro el empleado
+			if ($user == null) {
+				return response()->json([
+					'error' => "No se ha encontrado ningún empleado con esa UID.",
+					'errorCode' => "offer_getAppliedOffers_1"
+				], 404);
+			};			
+			
+			
 			// Busco todas las ofertas a las que se ha inscrito el employee
 			$result = $user->offers;
+			
 			
 			// Recorro el array de ofertas suscritas
 			foreach ($result as $offer) {
