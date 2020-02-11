@@ -47,9 +47,7 @@ class OfferController extends Controller
 			$body = Offer::create($body);
 			
 			
-			return response() -> json ([
-				"success" => "e",
-			]);
+			return response() -> json ([ $body ]);
 				
 		} catch(\Illuminate\Database\QueryException $e){
                 
