@@ -97,8 +97,8 @@ class OfferController extends Controller
             -> when ( $keyw, function ($q, $keyw) {
                 $q -> where("title", "LIKE", "%{$keyw}%")
                 ->orWhere('description', 'LIKE', "%{$keyw}%")
-                ->orWhere('uid', 'LIKE', "%{$keyw}%")
-                ->orWhere('company_name', 'LIKE', "%{$keyw}%");
+                ->orWhere('uid', 'LIKE', "%{$keyw}%");
+                
                 
             })
             -> when ( $prov, function ($q, $prov) {
