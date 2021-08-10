@@ -1,7 +1,11 @@
 {
     "private": true,
     "scripts": {
-        "server": "php artisan serve --port=3000",
+        "create-key": "php artisan key:generate",
+        "migrate": "php artisan migrate:refresh",
+        "update":"composer update",
+        "install": "npm run update && composer install",
+        "server": "npm run install && npm run create-key && npm run migrate && php artisan serve --port=3000",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
